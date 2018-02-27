@@ -1,0 +1,142 @@
+#user-orders.container {
+    width: 950px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#user-orders .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+#user-orders .order_sorter ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+#user-orders .order_sorter li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 50px 0 0;
+    position: relative;
+    bottom: -1px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+    word-wrap: break-word;
+}
+#user-orders .order_sorter li.first {
+    margin: 0 5px;
+}
+#user-orders .order_sorter li.selected {
+    border-bottom-color: #5def8a;
+    font-weight: 700;
+}
+#user-orders .order_sorter a {
+    text-decoration: none;
+    color: #555;
+}
+
+#user-orders .order-container {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    border: 1px solid #ddd;
+    background: #fff;
+    margin-bottom: 15px;
+}
+#user-orders .order-container .header {
+    padding: 14px 18px;
+    background: #fafafa;
+    border-bottom: 1px solid #ddd;
+}
+#user-orders .order-container .header .col-1 {
+    float: left;
+    width: 20%;
+}
+#user-orders .order-container .header .col-2 {
+    float: left;
+    width: 15%;
+}
+#user-orders .order-container .header .col-3 {
+    float: left;
+    width: 40%;
+}
+#user-orders .order-container .header .col-4 {
+    float: left;
+    width: 25%;
+}
+#user-orders .order-container .header span:nth-child(2) {
+    display: block;
+    font-weight: 600;
+    margin-top: 4px;
+}
+#user-orders .order-container .box {
+    background: #fff;
+    padding: 18px 18px;
+}
+#user-orders .order-container .box img {
+    max-width: 140px;
+    border: 1px solid #ddd;
+    box-shadow: 0;
+    transition: box-shadow 0.5s;
+}
+#user-orders .order-container .box img:hover {
+    box-shadow: 0 0 3px #888;
+}
+#user-orders .order-container .box .col-1 {
+    float: left;
+    width: 18%;
+}
+#user-orders .order-container .box .col-2 {
+    float: left;
+    width: 62%;
+}
+#user-orders .order-container .box .col-2 p {
+    line-height: 1.4em;
+    margin-bottom: 10px;
+}
+#user-orders .order-container .box .col-2 .btn-default {
+    width: 25%;
+    font-size: 12px;
+    padding: 5px;
+}
+#user-orders .order-container .box .col-2 .error-title {
+    width: 80%;
+    text-align: center;
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid #f30;
+    color: #f30;
+}
+#user-orders .order-container .box .col-2 .product-title {
+    font-size: 16px;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 5px;
+}
+#user-orders .order-container .box .col-2 .product-title i {
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+#user-orders .order-container .box .col-3 {
+    float: right;
+    width: 20%;
+}
+#user-orders .order-container .box a.btn-default {
+    padding: 8px 0;
+    background: #f3f3f3;
+    border: 1px solid #ddd;
+    color: #555;
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+}
+#user-orders .order-container .box a.btn-default:hover {
+    background: #eee;
+}

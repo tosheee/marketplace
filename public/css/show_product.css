@@ -1,0 +1,285 @@
+.order-breadcrumb {
+    margin-bottom: 10px;
+    color: #555;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.order-breadcrumb a {
+    color:#555;
+    text-decoration:none;
+    margin-right:4px;
+}
+.order-breadcrumb a:hover {
+    text-decoration:underline;
+    color: linear-gradient(45deg, #5def8a, #34e89e);;
+}
+.order-breadcrumb a.active {
+    font-weight:400;
+    color: #2ab27b;
+}
+
+
+ul > li {
+    margin-right:25px;
+    font-weight:lighter;
+}
+
+li.active {
+    border-bottom:3px solid silver;
+}
+
+.item-photo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-right:1px solid #f6f6f6;
+}
+
+.menu-items{
+    list-style-type:none;
+    font-size:11px;
+    display:inline-flex;
+    margin-bottom:0;
+    margin-top:20px
+}
+
+.btn-success{
+    width:100%;
+    border-radius:0;
+}
+
+.section{
+    width:100%;
+    margin-left:-15px;
+    padding:2px;
+    padding-left:15px;
+    padding-right:15px;
+    background:#f8f9f9
+}
+
+.title-price{
+    margin-top:30px;
+    margin-bottom:0;
+    color:black
+}
+
+.title-attr{
+    margin-top:0;
+    margin-bottom:0;
+    color:black;
+}
+
+.btn-minus{
+    cursor:pointer;
+    font-size:7px;
+    display:flex;
+    align-items:center;
+    padding:5px;
+    padding-left:10px;
+    padding-right:10px;
+    border:1px solid gray;
+    border-radius:2px;
+    border-right:0;
+}
+
+.btn-plus {
+    cursor:pointer;
+    font-size:7px;
+    display:flex;
+    align-items:center;
+    padding:5px;
+    padding-left:10px;
+    padding-right:10px;
+    border:1px solid gray;
+    border-radius:2px;
+    border-left:0;
+}
+
+div.section > div {
+    width:100%;
+    display:inline-flex;
+}
+div.section > div > input {
+    margin:0;
+    padding-left:5px;
+    font-size:10px;
+    padding-right:5px;
+    max-width:18%;
+    text-align:center;
+}
+.attr,.attr2{
+    cursor:pointer;
+    margin-right:5px;
+    height:20px;
+    font-size:10px;
+    padding:2px;
+    border:1px solid gray;
+    border-radius:2px;
+}
+.attr.active,.attr2.active{
+    border:1px solid orange;
+}
+
+@media (max-width: 426px) {
+    .container {
+        margin-top:0px !important;
+    }
+
+    .container > .row{
+        padding:0 !important;
+    }
+
+    .container > .row > .col-xs-12.col-sm-5{
+        padding-right:0 ;
+    }
+
+    .container > .row > .col-xs-12.col-sm-9 > div > p{
+        padding-left:0 !important;
+        padding-right:0 !important;
+    }
+
+    .container > .row > .col-xs-12.col-sm-9 > div > ul{
+        padding-left:10px !important;
+
+    }
+    .section{width:104%;}
+    .menu-items{padding-left:0;}
+}
+
+.count-textbox {
+    color: #080915;
+    font-size:22px;
+    line-height: normal;
+    width: 45px;
+    height: 40px;
+    text-align: center;
+    background-color: rgba(255, 122, 17, 0);
+    border: none;
+}
+
+.quantity-product {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    border-left: 3px solid #fff;
+}
+
+.price {
+    position: relative;
+}
+
+.minus-button {
+    top: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    position: absolute;
+    width: 30px;
+    left: 45px;
+    height: 25px;
+    background-color: #d32F2f;
+    border: none;
+    color: #fff;
+}
+.minus-button:focus {
+    outline: none;
+}
+.plus-button {
+    bottom: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    position: absolute;
+    width: 30px;
+    left: 45px;
+    height: 25px;
+    background-color: rgba(27, 223, 255, 1);
+    border: none;
+    color: #fff;
+}
+.plus-button:after {
+    background: #dcdddd;
+    content: '';
+    height: 1px;
+    width: 20px;
+    left: 9px;
+    position: absolute;
+    bottom: 0;
+}
+.plus-button:focus {
+    outline: none;
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+    #vertical_menu{
+        display: none;
+    }
+    #menu-scroll{
+        display: none;
+    }
+    #show-product-info-box
+    {
+        display: block;
+    }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+    /* Styles */
+    #vertical_menu{
+        display: none;
+    }
+    #menu-scroll{
+        display: none;
+    }
+    #show-product-info-box
+    {
+        display: block;
+    }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    #vertical_menu{
+        display: none;
+    }
+    #menu-scroll{
+        display: none;
+    }
+    #show-product-info-box
+    {
+        display: block;
+    }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 768px) and (max-device-width : 1024px) {
+    /* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    /* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+    /* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1224px) {
+    /* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width : 1824px) {
+    /* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media  only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+    /* Styles */
+}

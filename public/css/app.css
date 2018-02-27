@@ -1,0 +1,136 @@
+@import url(common.css);
+@import url(footer.css);
+@import url(admin_style.css);
+@import url(horizontal_nav_bar.css);
+@import url(show_product.css);
+@import url(admin_forms.css);
+@import url(checkout.css);
+@import url(slider.css);
+@import url(index_blocks_products.css);
+@import url(shopping_cart.css);
+@import url(your_orders.css);
+@import url(vertical_menu.css);
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
+
+#wrapper{
+    
+    background-image: url("/storage/common_pictures/bg4.png");
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 620px;
+    padding: 3%;
+}
+
+#show-product{
+    margin: 0 auto;
+}
+
+td, th {
+    padding: 1%;
+}
+
+#accordion{
+    font-size: 1vw;
+}
+
+#menu-scroll{
+    font-size: 1vmax;
+}
+
+h4.panel-title {
+    font-size: 1vw;
+}
+
+#carousel{
+    width: 94.3%;
+}
+
+#carousel .item .img-responsive {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+
+
+
+
+/* The Modal (background) */
+
+
+.modal-contact-forma-c {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    padding-top: 8%; /* Location of the box */
+    left: 0;
+    top: 0;
+    border-radius: 0px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+
+.modal-content-contact-form {
+    width: 65%;
+    background-color: #dbe1de;
+    margin: auto;
+    padding: 0 3% 0 3%;
+    border-radius: 0px;
+    border: 1px solid #888;
+    
+}
+
+.modal-contact-forma-c .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 5px;
+   
+}
+
+.modal-contact-forma-c .close:hover,.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+.modal-contact-forma-c .dark #contact_form input[type=text], .dark #contact_form textarea, .dark #contact_form input[type=email]{
+    font-size:15px;
+    margin-bottom:20px;
+    color: #ffffff !important;
+    border:none;
+    border:solid 1px #555;
+    background:rgba(0,0,0,0.3);
+    border-radius:0 !important;
+}
+
+.modal-contact-forma-c #contact_form input[type=submit]{
+    color: #ffffff;
+    background:#2ab27b;
+}
+
+.modal-contact-forma-c #contact_form input[type=submit]:hover{
+    background:#2ab27b;
+}
+
+.modal-contact-forma-c #contact_form input{
+    border-radius: 0px;
+}
+
+.modal-contact-forma-c #contact_form textarea{
+    border-radius: 0px;
+    height:90px;
+}
+
+
+
