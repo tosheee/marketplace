@@ -1,5 +1,6 @@
 <ul>
     <li><a href="/account"> Overview</a></li>
+    <li><a href="/create_seller"> Create seller</a></li>
     <li><a href="/account/edit_account"> Edit Account</a></li>
     <li><a href="/account/change_password"> Password</a></li>
     <li><a href="/account/change_password"> New sletter</a></li>

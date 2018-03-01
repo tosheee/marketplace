@@ -18,35 +18,17 @@ View::composer('*', function($view) {
 
 Auth::routes();
 
-Route::get('/page', [
-    'uses' => 'StoreController@getShowPages',
-    'as'  => 'store.showPage'
-]);
+Route::get('/page', [ 'uses' => 'StoreController@getShowPages', 'as'  => 'store.showPage' ]);
 
-Route::get('/store', [
-    'uses' => 'StoreController@index',
-    'as'   => 'store.index'
-]);
+Route::get('/store', ['uses' => 'StoreController@index', 'as'   => 'store.index']);
 
-Route::get('/store/view_user_orders/{id}', [
-    'uses' => 'StoreController@viewUserOrders',
-    'as'   => 'store.index'
-]);
+Route::get('/store/view_user_orders/{id}', [ 'uses' => 'StoreController@viewUserOrders', 'as'   => 'store.index']);
 
-Route::get('/store/search', [
-    'uses' => 'SearchController@search',
-    'as'   => 'store.search'
-]);
+Route::get('/store/search', ['uses' => 'SearchController@search', 'as'   => 'store.search']);
 
-Route::get('/store/{id}', [
-    'uses' => 'StoreController@show',
-    'as'   => 'store.show'
-]);
+Route::get('/store/{id}', ['uses' => 'StoreController@show', 'as'   => 'store.show']);
 
-Route::get('/account', [
-    'uses' => 'AccountsController@index',
-    'as'   => 'accounts.index'
-]);
+Route::get('/account', ['uses' => 'AccountsController@index', 'as'   => 'accounts.index']);
 
 Route::post('admin/products/create/{id?}', function($id = null) {
 
@@ -67,30 +49,18 @@ Route::post('/send-user-message', 'StoreController@postUserMessage');
 
 Route::post('/store/like_product/{id}', 'StoreController@getLikeProduct');
 
-Route::post('/remove/{id}', [
-    'uses' => 'StoreController@getRemoveItem',
-    'as'  => 'store.remove'
-]);
+Route::post('/remove/{id}', ['uses' => 'StoreController@getRemoveItem', 'as'  => 'store.remove']);
 
-Route::get('/checkout', [
-    'uses' => 'StoreController@getCheckout',
-    'as'  => 'store.checkout'
-]);
+Route::get('/checkout', [ 'uses' => 'StoreController@getCheckout', 'as'  => 'store.checkout']);
 
 
 Route::post('/checkout', 'StoreController@postCheckout');
 
-Route::get('/shopping-cart', [
-    'uses' => 'StoreController@getCart',
-    'as'  => 'store.shoppingCart'
-]);
+Route::get('/shopping-cart', ['uses' => 'StoreController@getCart', 'as'  => 'store.shoppingCart']);
 
 // Admin
 
-Route::get('/admin/products/search', [
-    'uses' => 'Admin\ProductsController@search_category',
-    'as'   => 'search_category'
-]);
+Route::get('/admin/products/search', ['uses' => 'Admin\ProductsController@search_category', 'as'   => 'search_category' ]);
 
 Route::get ('/admin/dashboard', 'AdminController@index');
 

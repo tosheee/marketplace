@@ -16,11 +16,10 @@ class AccountsController extends Controller
         return view('accounts.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function createSeller(){
+
+    }
+
     public function create()
     {
         //
