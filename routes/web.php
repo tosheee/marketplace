@@ -56,6 +56,10 @@ Route::get('/checkout', [ 'uses' => 'StoreController@getCheckout', 'as'  => 'sto
 
 Route::post('/checkout', 'StoreController@postCheckout');
 
+
+Route::get('/create_seller', 'AccountsController@createSeller');
+
+
 Route::get('/shopping-cart', ['uses' => 'StoreController@getCart', 'as'  => 'store.shoppingCart']);
 
 // Admin

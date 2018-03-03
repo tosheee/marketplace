@@ -17,7 +17,7 @@ class AccountsController extends Controller
     }
 
     public function createSeller(){
-
+        return view('accounts.create_seller');
     }
 
     public function create()
