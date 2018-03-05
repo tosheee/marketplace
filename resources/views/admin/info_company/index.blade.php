@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.admin_partials.admin_menu')
+    @include('admin.admin_partials.admin_menu_old')
 
         @if(isset($info_company))
             <a class="btn btn-default" href="/admin/info_company/{{ $info_company->id }}/edit">Промяна</a>

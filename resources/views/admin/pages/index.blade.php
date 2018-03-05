@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.admin_partials.admin_menu')
+    @include('admin.admin_partials.admin_menu_old')
         <h3>Страници</h3>
         <a class="btn btn-primary" href="/admin/pages/create">Създаване на страници</a>
         <br>

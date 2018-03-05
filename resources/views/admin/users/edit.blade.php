@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.admin_partials.admin_menu')
+    @include('admin.admin_partials.admin_menu_old')
 
         <h1>Промяна на потребител</h1>
         <a href="/admin/users" class="btn btn-default">Обратно</a>

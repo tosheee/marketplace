@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.admin_partials.admin_menu')
+    @include('admin.admin_partials.admin_menu_old')
         <a href="/admin/users" class="btn btn-default">Обратно</a>
         <h1>{{ $user->name }}</h1>
         <div class="well">

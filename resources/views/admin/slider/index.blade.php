@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.admin_partials.admin_menu')
+    @include('admin.admin_partials.admin_menu_old')
 
     <h3>Слайдер</h3>
     <a class="btn btn-primary" href="/admin/slider/create">Нова снимка</a>

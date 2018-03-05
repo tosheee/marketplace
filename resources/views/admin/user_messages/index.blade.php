@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.admin_partials.admin_menu')
+    @include('admin.admin_partials.admin_menu_old')
         <h3>Съобщения от потребител</h3>
         <p><a href="https://www.abv.bg/" target="_blank">Към abv.bg</a></p>
         <br><br>

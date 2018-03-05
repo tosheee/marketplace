@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.admin_partials.admin_menu')
+    @include('admin.admin_partials.admin_menu_old')
         <a href="/admin/categories" class="btn btn-default">Обратно</a>
         <br>
         <br>

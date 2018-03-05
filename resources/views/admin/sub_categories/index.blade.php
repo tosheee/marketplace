@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.admin_partials.admin_menu')
+    @include('admin.admin_partials.admin_menu_old')
         <h3>Подкатегория</h3>
         <a class="btn btn-primary" href="/admin/sub_categories/create">Нова подкатегория</a>
         <br><br>

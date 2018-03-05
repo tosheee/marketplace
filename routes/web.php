@@ -64,6 +64,25 @@ Route::get('/shopping-cart', ['uses' => 'StoreController@getCart', 'as'  => 'sto
 
 // Admin
 
+/*
+Route::prefix('admin')->group(function () {
+    Route::get('users', function () {
+        // Matches The "/admin/users" URL
+    });
+});
+
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
+    Route::get('news', ['uses' => 'NewsController@index']);
+    Route::get('users', ['uses' => 'UserController@index']);
+
+});
+*/
+
+
+
+
+
 Route::get('/admin/products/search', ['uses' => 'Admin\ProductsController@search_category', 'as'   => 'search_category' ]);
 
 Route::get ('/admin/dashboard', 'AdminController@index');
@@ -99,3 +118,6 @@ Route::resource('/admin/slider', 'Admin\SliderController');
 Route::get ('/admin/answer/{id}', 'Admin\UserMessagesController@markAnswer');
 
 Route::resource('/admin/user_messages', 'Admin\UserMessagesController');
+
+Route::resource('/admin/cities', 'Admin\CitiesController');
+Route::resource('/admin/countries', 'Admin\CountriesController');

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.admin_partials.admin_menu')
+    @include('admin.admin_partials.admin_menu_old')
 
         <div class="basic-grey">
             <form action="/admin/info_company/{{ $info_company->id }}" method="POST" enctype="multipart/form-data">

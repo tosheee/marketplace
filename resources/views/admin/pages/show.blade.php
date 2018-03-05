@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.admin_partials.admin_menu')
+    @include('admin.admin_partials.admin_menu_old')
         <a href="/admin/pages" class="btn btn-default">Обратно</a>
         <a href="/admin/pages/{{ $page->id }}/edit" class="btn btn-default">Промяна</a>
         <form method="POST" action="/admin/pages/{{ $page->id }}" accept-charset="UTF-8" class="pull-right">

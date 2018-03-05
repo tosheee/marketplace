@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.admin_partials.admin_menu')
+    @include('admin.admin_partials.admin_menu_old')
 
         <a class="btn btn-primary" href="/admin/admins/create">Нов Администратор</a>
         <br>

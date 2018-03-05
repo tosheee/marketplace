@@ -1,27 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class AccountsController extends Controller
+class CitiesController extends Controller
 {
-
-    //public function __construct()
-    //{
-      // $this->middleware('auth');
-    //}
 
     public function index()
     {
-        return view('accounts.index');
+        //
     }
 
-    public function createSeller(){
-
-        return view('accounts.create_seller');
-    }
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         //
