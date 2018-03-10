@@ -1,6 +1,8 @@
 <ul>
     <li><a href="/account"> Overview</a></li>
     <li><a href="/create_seller"> Create seller</a></li>
+    <li><a href="/create_product"> Create product</a></li>
+    <!--
     <li><a href="/account/edit_account"> Edit Account</a></li>
     <li><a href="/account/change_password"> Password</a></li>
     <li><a href="/account/change_password"> New sletter</a></li>
@@ -14,4 +16,5 @@
     <li><a href="/account/conversation/">Returns</a></li>
     <li><a href="/account/conversation/">Transaction</a></li>
     <li><a href="/account/conversation/">Create a new seller account</a></li>
+    -->
 </ul>

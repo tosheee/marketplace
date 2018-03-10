@@ -25,7 +25,7 @@
                             <div class="form-group{{ $errors->has('country_name') ? ' has-error' : '' }}">
                                 <label for="country_name" class="col-md-4 control-label">Country name</label>
                                 <div class="col-md-6">
-                                    <input id="country_name" type="text" class="form-control" name="country_name" value="{{ $country->name_country }}" required autofocus>
+                                    <input id="country_name" type="text" class="form-control" name="country_name" value="{{ $country->country_name }}" required autofocus>
                                     @if ($errors->has('country_name'))
                                         <span class="help-block"><strong>{{ $errors->first('country_name') }}</strong></span>
                                     @endif
@@ -35,7 +35,7 @@
                             <div class="form-group{{ $errors->has('country_identifier') ? ' has-error' : '' }}">
                                 <label for="country_identifier" class="col-md-4 control-label">Country identifier</label>
                                 <div class="col-md-6">
-                                    <input id="country_identifier" type="text" class="form-control" name="country_identifier" {{ $country->name_identifier }} >
+                                    <input id="country_identifier" type="text" class="form-control" name="country_identifier" value="{{ $country->country_identifier }}" >
                                     @if ($errors->has('country_identifier'))
                                         <span class="help-block"><strong>{{ $errors->first('country_identifier') }}</strong></span>
                                     @endif
@@ -44,7 +44,8 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">Create</button>
+                                    <input name="_method" type="hidden" value="PUT">
+                                    <input class="btn btn-primary" type="submit" value="Update">
                                 </div>
                             </div>
                         </form>

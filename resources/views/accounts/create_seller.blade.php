@@ -7,68 +7,76 @@
 
     <div class="col-md-10">
         <div class="basic-grey">
-            <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('accounts.store_seller') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                
+
+                <input type="hidden" name="seller_id" value="{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}" class="label-values"/>
 
                 <label>
                     <span>Brandname * </span>
-                    <input type="text" name="brand_name" value="" id="admin_product_description" class="label-values"/>
+                    <input type="text" name="brand_name" class="label-values"/>
                 </label>
 
                 <label>
                     <span>Company / Brand logo </span>
-                    <input type="text" name="brand_name" value="" id="admin_product_description" class="label-values"/>
+                    <input type="text" name="brand_logo"class="label-values"/>
                 </label>
 
                 <label>
                     <span>Profile page banner </span>
-                    <input type="text" name="brand_name" value="" id="admin_product_description" class="label-values"/>
+                    <input type="text" name="brand_banner" class="label-values"/>
                 </label>
 
                 <label>
                     <span> Company name</span>
-                    <input type="text" name="brand_name" value="" id="admin_product_description" class="label-values"/>
+                    <input type="text" name="company_name" class="label-values"/>
                 </label>
 
                 <label>
                     <span>Company UIC Personal ID</span>
-                    <input type="text" name="brand_name" value="" id="admin_product_description" class="label-values"/>
+                    <input type="text" name="company_uic" class="label-values"/>
                 </label>
 
                 <label>
-                    <span title="Is your company VAT registered?">company VAT registered?</span>
-                    <input type="checkbox" name="brand_name" value="" id="admin_product_description" class="label-values"/>
+                    <span title="VAT registered?">company VAT registered?</span>
+                    <input type="checkbox" name="company_vat_registered" class="label-values"/>
                 </label>
 
                 <label>
                     <span>Phone</span>
-                    <input type="text" name="brand_name" value="" id="admin_product_description" class="label-values"/>
+                    <input type="text" name="company_phone" class="label-values"/>
                 </label>
 
                 <label>
                     <span>Accept terms</span>
-                    <input type="checkbox" name="brand_name" value="" id="admin_product_description" class="label-values"/>
+                    <input type="checkbox" name="accept_terms" class="label-values"/>
                 </label>
 
+                <div class="form-group{{ $errors->has('country_id') ? ' has-error' : '' }}">
+                    <label>
+                        <span>Country</span>
+                        <select class="form-control" name="country_id" >
+                            <option value="">Избери подкатегории</option>
+                            @foreach($countries as $country)
+                                <option value="{{ $country->id }}">{{ $country->country_name }}</option>
+                            @endforeach
+                        </select>
+                    </label>
+                </div>
+
                 <label>
-                    <span>Country</span>
-                    <input type="text" name="brand_name" value="" id="admin_product_description" class="label-values"/>
+                    <span>City</span>
+                    <input type="text" name="city_id" class="label-values"/>
                 </label>
 
                 <label>
                     <span>Street address, post code</span>
-                    <input type="text" name="brand_name" value="" id="admin_product_description" class="label-values"/>
-                </label>
-
-                <label>
-                    <span>City</span>
-                    <input type="text" name="brand_name" value="" id="admin_product_description" class="label-values"/>
+                    <input type="text" name="address_company" value="" id="admin_product_description" class="label-values"/>
                 </label>
 
                 <span>Description</span>
                     <label>
-                        <textarea name="description[general_description]" id="editor-create" ></textarea>
+                        <textarea name="brand_description" id="editor-create" ></textarea>
                     </label>
                 <br>
                 

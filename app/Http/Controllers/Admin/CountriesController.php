@@ -65,7 +65,7 @@ class CountriesController extends Controller
         $country->country_identifier = $request->input('country_identifier');
         $country->save();
 
-        return redirect('/admin/sub_categories')->with('success', 'Подкатегорията е обновена');
+        return redirect('/admin/countries')->with('success', 'Подкатегорията е обновена');
     }
 
     public function destroy($id)

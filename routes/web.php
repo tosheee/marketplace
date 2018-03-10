@@ -52,12 +52,13 @@ Route::post('/store/like_product/{id}', 'StoreController@getLikeProduct');
 Route::post('/remove/{id}', ['uses' => 'StoreController@getRemoveItem', 'as'  => 'store.remove']);
 
 Route::get('/checkout', [ 'uses' => 'StoreController@getCheckout', 'as'  => 'store.checkout']);
-
-
 Route::post('/checkout', 'StoreController@postCheckout');
 
-
 Route::get('/create_seller', 'AccountsController@createSeller');
+Route::post('/store_seller', ['uses' => 'AccountsController@storeSeller', 'as'  => 'accounts.store_seller']);
+
+Route::get('/create_product', 'AccountsController@createProduct');
+Route::post('/store_product', ['uses' => 'AccountsController@storeProduct', 'as'  => 'accounts.store_product']);
 
 
 Route::get('/shopping-cart', ['uses' => 'StoreController@getCart', 'as'  => 'store.shoppingCart']);
