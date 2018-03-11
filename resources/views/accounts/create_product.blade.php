@@ -6,6 +6,8 @@
     </div>
 
 
+    <div class="col-md-9">
+
 
     <div class="basic-grey">
         <form action="{{ route('accounts.store_product') }}" method="post" enctype="multipart/form-data">
@@ -160,6 +162,7 @@
                 <input type="submit" name="commit" value="Създай" class="btn btn-success">
             </div>
         </form>
+    </div>
     </div>
 
     <script>

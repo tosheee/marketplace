@@ -28,7 +28,7 @@ Route::get('/store/search', ['uses' => 'SearchController@search', 'as'   => 'sto
 
 Route::get('/store/{id}', ['uses' => 'StoreController@show', 'as'   => 'store.show']);
 
-Route::get('/account', ['uses' => 'AccountsController@index', 'as'   => 'accounts.index']);
+
 
 Route::post('admin/products/create/{id?}', function($id = null) {
 
@@ -54,14 +54,24 @@ Route::post('/remove/{id}', ['uses' => 'StoreController@getRemoveItem', 'as'  =>
 Route::get('/checkout', [ 'uses' => 'StoreController@getCheckout', 'as'  => 'store.checkout']);
 Route::post('/checkout', 'StoreController@postCheckout');
 
-Route::get('/create_seller', 'AccountsController@createSeller');
-Route::post('/store_seller', ['uses' => 'AccountsController@storeSeller', 'as'  => 'accounts.store_seller']);
-
-Route::get('/create_product', 'AccountsController@createProduct');
-Route::post('/store_product', ['uses' => 'AccountsController@storeProduct', 'as'  => 'accounts.store_product']);
-
-
 Route::get('/shopping-cart', ['uses' => 'StoreController@getCart', 'as'  => 'store.shoppingCart']);
+
+
+
+
+//Accounts
+
+
+
+Route::get('/account/create_seller', 'AccountsController@createSeller');
+Route::post('/account/store_seller', ['uses' => 'AccountsController@storeSeller', 'as'  => 'accounts.store_seller']);
+
+Route::get('/account/create_product', 'AccountsController@createProduct');
+Route::post('/account/store_product', ['uses' => 'AccountsController@storeProduct', 'as'  => 'accounts.store_product']);
+
+Route::get('/account/products/{id}', ['uses' => 'AccountsController@insertedProducts', 'as'   => 'accounts.insertedProducts']);
+
+Route::get('/account/{id}', ['uses' => 'AccountsController@index', 'as'   => 'accounts.index']);
 
 // Admin
 
@@ -79,10 +89,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 
 });
 */
-
-
-
-
 
 Route::get('/admin/products/search', ['uses' => 'Admin\ProductsController@search_category', 'as'   => 'search_category' ]);
 

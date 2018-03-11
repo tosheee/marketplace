@@ -95,7 +95,7 @@
                         <li><a href="{{ route('login') }}">Вход</a></li>
                         <li><a href="{{ route('register') }}">Регистрация</a></li>
                     @else
-                        <li><a href="/account">{{ Auth::user()->name }}</a></li>
+                        <li><a href="/account/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a></li>
                         <li><a href="/store/view_user_orders/{{ Auth::user()->id }}">Моите поръчки</a></li>
                         <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
@@ -206,7 +206,7 @@
                         <!-- end col -->
                         <div class="col-sm-3">
                             <select class="form-control input-lg" name="sub_category" id="search-select-category">
-                                <option style="padding-top: 2cm;" value="all"><b>Продукти</b></option>
+                                <option style="padding-top: 2cm;" value="all"><b>Departments</b></option>
 
                                 @foreach($categoriesButtonsName as $categoryButton)
                                     <!-- category-name -->
@@ -265,15 +265,15 @@
         <div class="collapse navbar-collapse navbar-1" style="margin-top: 0px;">
             <ul class="nav navbar-nav">
                 <li class="dropdown megaDropMenu">
-                    <a href="/store" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false" id="store-button">Продукти <i class="fa fa-angle-down ml-5"></i></a>
+                    <a href="/store" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false" id="store-button">DEPARTMENTS <i class="fa fa-angle-down ml-5"></i></a>
                     <ul class="dropdown-menu row">
                         @foreach($categoriesButtonsName as $categoryButton)
                             <li class="col-sm-3 col-xs-12">
                                 <ul class="list-unstyled">
-                                    <li><a href="/store/search?category={{ $categoryButton->id }}">{{ $categoryButton->name }}</li>
+                                    <li><a href="/store/search?category={{ $categoryButton->id }}"><strong>{{ $categoryButton->name }}</strong></a></li>
                                     @foreach($subCategoriesButtonsName as $subCategoryButton)
                                         @if ($subCategoryButton->category_id == $categoryButton->id)
-                                            <li><a href="/store/search?sub_category={{ $subCategoryButton->identifier }}">{{ $subCategoryButton->name }}</a></li>
+                                            <li class="category-name"><a href="/store/search?sub_category={{ $subCategoryButton->identifier }}">{{ $subCategoryButton->name }}</a></li>
                                         @endif
                                     @endforeach
                                 </ul>
@@ -289,7 +289,12 @@
                        });
                    });
                 </script>
-		@foreach($pagesButtonsRender as $pageButton)
+
+                <li>
+                    <a href="/special_offers    " class="dropdown-toggle"  data-hover="dropdown" data-close-others="false">SPECIAL OFFERS</a>
+                </li>
+
+            @foreach($pagesButtonsRender as $pageButton)
                     <li><a href="/page?show={{ $pageButton->url_page }}" class="dropdown-toggle"  data-hover="dropdown" data-close-others="false">{{ $pageButton->name_page }}</a></li>
                 @endforeach
             </ul>
@@ -320,7 +325,7 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown megaDropMenu">
 
-                    <a href="/store" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false" id="store-button">Продукти <i class="fa fa-angle-down ml-5"></i></a>
+                    <a href="/store" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false" id="store-button">DEPARTMENTS<i class="fa fa-angle-down ml-5"></i></a>
                     <ul class="dropdown-menu row">
                         @foreach($categoriesButtonsName as $categoryButton)
                             <li class="col-sm-3 col-xs-12">
@@ -443,7 +448,7 @@
 
     $(window).scroll(function()
     {
-        if($(document).scrollTop() > 150)
+        if($(document).scrollTop() > 50)
         {
             $('#menu-scroll').css('visibility', 'visible');
         }

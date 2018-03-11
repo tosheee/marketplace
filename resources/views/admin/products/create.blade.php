@@ -9,7 +9,7 @@
                     <label>
                         <span>Категории:</span>
                         <select class="form-control" name="category_id" id="select-category">
-                            <option value="">Избери категория</option>
+                            <option value="">Chose category</option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
@@ -21,7 +21,7 @@
                     <label>
                         <span>Подкатегория:</span>
                         <select class="form-control" name="sub_category_id" id="select-sub-category">
-                            <option value="">Избери подкатегория</option>
+                            <option value="">Chose sub category</option>
                             @foreach($subCategories as $sub_category)
                                 <option value="{{ $sub_category->id }}">{{ $sub_category->name }}</option>
                             @endforeach
@@ -33,9 +33,21 @@
                     <label>
                         <span>Идентификатор:</span>
                         <select class="form-control" name="identifier" id="select-identifier">
-                            <option value="">Избери идентификатор</option>
+                            <option value="">Identifier</option>
                             @foreach($subCategories as $sub_category)
                                 <option value="{{ $sub_category->identifier }}">{{ $sub_category->identifier }}</option>
+                            @endforeach
+                        </select>
+                    </label>
+                </div>
+
+                <div class="form-group{{ $errors->has('allSellers') ? ' has-error' : '' }}">
+                    <label>
+                        <span>Sellers:</span>
+                        <select class="form-control" name="seller_id" id="all-sellers">
+                            <option value="">Chose seller</option>
+                            @foreach($allSellers as $seller)
+                                <option value="{{ $seller->id }}">{{ $seller->company_name }}</option>
                             @endforeach
                         </select>
                     </label>

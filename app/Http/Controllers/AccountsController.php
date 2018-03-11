@@ -9,6 +9,7 @@ use App\Admin\Seller;
 use App\Admin\SubCategory;
 use App\Admin\Category;
 use App\Admin\Product;
+use App\Order;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -22,14 +23,33 @@ class AccountsController extends Controller
       // $this->middleware('auth');
     //}
 
-    public function index()
+    public function index($id){
+        $ordersIntoSeller = Order::where('user_id', $id)->orderBy('created_at', 'desc')->get();
+
+        return view('accounts.index')->with('ordersIntoSeller', $ordersIntoSeller);
+    }
+
+    public function orders()
     {
-        return view('accounts.index');
+        $orders = Order::orderBy('created_at', 'desc')->paginate(5);
+
+        return view('accounts.index')->with('orders', $orders)->with('title', 'Orders');
+    }
+
+    public function insertedProducts($id){
+
+        $categories = Category::all();
+        $subCategories = SubCategory::all();
+
+        $insertedProducts = Product::where('seller_id', $id)->orderBy('created_at', 'desc')->get();
+
+        return view('accounts.inserted_products')->with('categories', $categories)->with('subCategories', $subCategories)->with('insertedProducts', $insertedProducts)->with('title', 'Orders');
     }
 
     public function createSeller(){
 
         $countries = Country::all();
+
         return view('accounts.create_seller')->with('countries', $countries);
     }
 

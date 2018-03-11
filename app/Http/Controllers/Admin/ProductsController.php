@@ -6,11 +6,15 @@ namespace App\Http\Controllers\Admin;
 use App\Admin\SubCategory;
 use App\Admin\Category;
 use App\Admin\Product;
+use App\Admin\Seller;
+
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 use Image;
+
 
 class ProductsController extends Controller
 {
@@ -44,14 +48,16 @@ class ProductsController extends Controller
 
     public function create()
     {
+        $allSellers = Seller::all();
         $categories = Category::all();
         $subCategories = SubCategory::all();
-        return view('admin.products.create')->with('categories', $categories)->with('subCategories', $subCategories)->with('title', 'Създаване на продукт');
+        return view('admin.products.create')->with('categories', $categories)->with('subCategories', $subCategories)->with('allSellers', $allSellers)->with('title', 'Създаване на продукт');
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
+            'seller_id'     => 'required',
             'category_id'     => 'required',
             'sub_category_id' => 'required',
             'identifier'      => 'required',
@@ -60,6 +66,7 @@ class ProductsController extends Controller
         if(!isset(DB::table('products')->latest('id')->first()->id))
         {
             $product = new Product;
+            $product->seller_id       = 1;
             $product->category_id     = 1;
             $product->sub_category_id = 1;
             $product->identifier      = '';
@@ -139,6 +146,7 @@ class ProductsController extends Controller
 
         // Create Category
         $product = new Product;
+        $product->seller_id       = $request->input('seller_id');
         $product->category_id     = $request->input('category_id');
         $product->sub_category_id = $request->input('sub_category_id');
         $product->identifier      = $request->input('identifier');

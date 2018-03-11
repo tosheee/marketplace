@@ -41,7 +41,7 @@ select.input-lg {
 }
 
 .text-primary a{
-    color: #5def8a;
+    color: #3ab4a6;
 }
 
 .text-primary a:hover{
@@ -328,8 +328,8 @@ select.input-lg {
 
 .middleBar .btn.btn-default {
     color: #ffffff;
-    background-color: #5def8a;
-    border: 1px solid #5def8a;
+    background-color: #3ab4a6;
+    border: 1px solid #3ab4a6;
     border-radius: 0px;
 }
 .middleBar .header-items .header-item {
@@ -358,7 +358,7 @@ select.input-lg {
     height: 20px;
     line-height: 20px;
     text-align: center;
-    background-color:#5def8a;
+    background-color:#3ab4a6;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     -ms-border-radius: 100%;
@@ -372,7 +372,7 @@ select.input-lg {
     transition: all 0.2s ease-in;
 }
 .middleBar .header-items .header-item a:hover {
-    background-color: #5def8a;
+    background-color: #3ab4a6;
     color: #ffffff;
 }
 
@@ -388,11 +388,11 @@ select.input-lg {
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    color:  #5def8a;
+    color:  #3ab4a6;
     background-color: transparent;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:after {
-    border-top:solid 2px  #2ab27b;
+    border-top:solid 2px  #3ab4a6;
 
 }
 .navbar-default .dropdown-menu {
@@ -426,7 +426,7 @@ select.input-lg {
     white-space: nowrap;
 }
 .dropdown-menu > li > a:hover{
-    color: #5def8a;
+    color:#3ab4a6;
 }
 
 
@@ -436,6 +436,7 @@ select.input-lg {
 
 .navbar-default .container{
     position:relative;
+    width: 100%;
 }
 .navbar-default .navbar-collapse li.dropdown.megaDropMenu {
     position: static;
@@ -445,17 +446,25 @@ select.input-lg {
     width: 100%;
 }
 .navbar-default .navbar-collapse li.dropdown.megaDropMenu .dropdown-menu li ul li:first-child{
-    padding: 20px 0px 5px 15px;
+    padding: 2px 0px 5px 10px;
     font-size: 16px;
     text-transform: uppercase;
     /* text-align: center; */
-    color: #5def8a;
+    color: #3ab4a6;
 }
 .navbar-default .navbar-collapse li.dropdown.megaDropMenu .dropdown-menu li ul li a{
-    display:block;color:#878c94;font-size: 14px;text-decoration:none;padding:8px 15px;
+    display:block;
+    color:#878c94;
+    font-size: 14px;
+    text-decoration:none;
 }
+
+.navbar-default .navbar-collapse li.dropdown.megaDropMenu .dropdown-menu li ul li.category-name a{
+    padding:2px 40px;
+}
+
 .navbar-default .navbar-collapse li.dropdown.megaDropMenu .dropdown-menu li ul li a:hover{
-    color: #04bc0c;
+    color: #3ab4a6;
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0.02);
 }
