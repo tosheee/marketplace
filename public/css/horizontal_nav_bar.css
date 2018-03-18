@@ -203,6 +203,7 @@ select.input-lg {
 #menu-scroll .cart-items::-webkit-scrollbar-track {
 
 }
+
 #menu-scroll .cart-items::-webkit-scrollbar-thumb {
     background-color: #084951;
     outline: 1px solid black;
@@ -328,8 +329,9 @@ select.input-lg {
 
 .middleBar .btn.btn-default {
     color: #ffffff;
-    background-color: #3ab4a6;
-    border: 1px solid #3ab4a6;
+
+    background: #04b4ef;
+    border: 1px solid #04b4ef;
     border-radius: 0px;
 }
 .middleBar .header-items .header-item {

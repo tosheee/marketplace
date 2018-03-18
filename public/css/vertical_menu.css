@@ -3,7 +3,7 @@
   font-family: 'Karla', 'Arial', sans-serif;
   font-weight: 500;
   background: rgba(247,117,96, 1);
-  background: linear-gradient(45deg, #5def8a, #34e89e);
+  background: linear-gradient(45deg, #04b4ef, #ffffff);
     
     
     
@@ -247,7 +247,7 @@ summary::-webkit-details-marker {
 
 summary{
     font-weight: bold;
-    background-color: #5def8a;
+    background-color: rgba(255, 255, 255, 0.12);
     padding: 15px 10px 15px 15px;
     outline: none;
     border-bottom: 1px solid #8a949d;
@@ -255,17 +255,17 @@ summary{
 
 summary:hover{
     font-weight: bold;
-    border-left: 5px solid #08b32e;
+
     color: #080915;
-    background-color: #a7efbd;
-    padding: 15px 10px 15px 15px;
+    background-color: rgba(30, 67, 186, 0.22);
+
     outline: none;
 }
 
 summary:after
 {
     content: " + ";
-    color: #e2faff;
+    color: #050606;
     float: right;
     /*font-size: 1.5em;*/
     font-weight: bold;
@@ -278,7 +278,7 @@ ul.v-nav-ul{
 }
 
 li.v-nav-li{
-    padding: 5px 10px 5px 25px;
+
     width: 100%;
 }
 
@@ -299,7 +299,7 @@ li.v-nav-li.active{
 }
 
 a.v-nav-a {
-    color: #ffffff;
+    color: #050606;
     text-decoration-line: none;
 }
 

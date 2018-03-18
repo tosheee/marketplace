@@ -1,99 +1,33 @@
-<nav class="topBar">
-    <div class="container">
-        <ul class="list-inline pull-left">
-            <li>
-                <span class="text-primary">
-
-                </span>
-
-            </li>
-        </ul>
-        
-         <div id="modal-contact-form-wrapper" class="modal-contact-forma-c">
-            <div class="modal-content-contact-form">
-                <span class="close">&times;</span>
-                <div class="col-md-12 text-center">
-                    <h3>Connect you with us</h3>
-                    <p></p>
-                </div>
-
-                <form name="contactForm" id="contact_form" method="post" action="/send-user-message" style="font-family: 'Helvetica Neue', Helvetica;">
-                    {{ csrf_field() }}
-                    <div class="row">
-                        <div>
-                            <input type="text" name="name" id="name" required="required" oninvalid="this.setCustomValidity('Please!')" oninput="setCustomValidity('')" value="{{ isset(Auth::user()->name) ? Auth::user()->name : '' }}" class="form-control" placeholder="Your name">
-                        </div>
-                        <br>
-                        <div>
-                            <input type="text" name="email" id="email" required="required" oninvalid="this.setCustomValidity('Please!')" oninput="setCustomValidity('')" value="{{ isset(Auth::user()->email) ? Auth::user()->email : '' }}" class="form-control" placeholder="Your email">
-                        </div>
-                        <br>
-                        <div>
-                            <textarea name="message" id="message" required="required" oninvalid="this.setCustomValidity('Please, enter your message!')" oninput="setCustomValidity('')" class="form-control" placeholder="Message"></textarea>
-                        </div>
-                        <br>
-                        <div class="col-md-12">
-                            <p id="submit">
-                                <input type="submit" id="send_message" value="Send" class="btn btn-border">
-                            </p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-  
-
-        
-        <ul class="topBarNav pull-right">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"></a>
-            </li>
-
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false">
-                    <span class="hidden-xs"></span>
-                </a>
-                <ul class="dropdown-menu w-100" role="menu"></ul>
-            </li>
-
-            <li class="dropdown">
-                    <ul class="dropdown-menu w-150" role="menu"></ul>
-            </li>
-
-            <li id="new-view-cart" class="dropdown">
-
-            </li>
-        </ul>
-    </div>
-</nav><!--=========-TOP_BAR============-->
-
-@include('partials.middle_top_bar')
-
-<nav class="navbar navbar-main navbar-default" role="navigation" style="opacity: 1;">
+<nav id="menu-scroll" class="navbar navbar-main navbar-default navbar-fixed-top" role="navigation" style="opacity: 1;">
     <div class="container">
         <!-- Brand and toggle -->
         <div class="navbar-header">
+
+            <span ><a href="/"><img style="margin: 10px 2px 0 0" width="100" src="/marketplace_logo.png" alt=""></a></span>
+
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+
         </div>
 
         <!-- Collect the nav links,  -->
         <div class="collapse navbar-collapse navbar-1" style="margin-top: 0px;">
             <ul class="nav navbar-nav">
                 <li class="dropdown megaDropMenu">
-                    <a href="/store" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false" id="store-button">Departments <i class="fa fa-angle-down ml-5"></i></a>
+
+                    <a href="/store" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false" id="store-button">Departments<i class="fa fa-angle-down ml-5"></i></a>
                     <ul class="dropdown-menu row">
                         @foreach($categoriesButtonsName as $categoryButton)
                             <li class="col-sm-3 col-xs-12">
                                 <ul class="list-unstyled">
-                                    <li><a href="/store/search?category={{ $categoryButton->id }}"><strong>{{ $categoryButton->name }}</strong></a></li>
+                                    <li><a href="/store/search?category={{ $categoryButton->id }}">{{ $categoryButton->name }}</a></li>
                                     @foreach($subCategoriesButtonsName as $subCategoryButton)
                                         @if ($subCategoryButton->category_id == $categoryButton->id)
-                                            <li class="category-name"><a href="/store/search?sub_category={{ $subCategoryButton->identifier }}">{{ $subCategoryButton->name }}</a></li>
+                                            <li><a href="/store/search?sub_category={{ $subCategoryButton->identifier }}">{{ $subCategoryButton->name }}</a></li>
                                         @endif
                                     @endforeach
                                 </ul>
@@ -103,18 +37,14 @@
                 </li>
 
                 <script>
-                   $(document).ready(function(){
-                       $('#store-button').click(function(){
-                          window.location.href ='/store'
-                       });
-                   });
+                    $(document).ready(function(){
+                        $('#store-button').click(function(){
+                            window.location.href ='/store'
+                        });
+                    });
                 </script>
 
-                <li>
-                    <a href="/special_offers    " class="dropdown-toggle"  data-hover="dropdown" data-close-others="false">Special Offers</a>
-                </li>
-
-            @foreach($pagesButtonsRender as $pageButton)
+                @foreach($pagesButtonsRender as $pageButton)
                     <li><a href="/page?show={{ $pageButton->url_page }}" class="dropdown-toggle"  data-hover="dropdown" data-close-others="false">{{ $pageButton->name_page }}</a></li>
                 @endforeach
             </ul>
@@ -202,74 +132,6 @@
                     </li>
                 @endif
             </ul>
-
         </div><!-- /.navbar-collapse -->
     </div>
 </nav>
-
-@include('partials.menu_scroll')
-
-<script>
-
-    $(window).scroll(function()
-    {
-        if($(document).scrollTop() > 130)
-        {
-            $('#menu-scroll').css('visibility', 'visible');
-        }
-        else
-        {
-            $('#menu-scroll').css('visibility', 'hidden');
-        }
-    });
-
-</script>
-
-<script type="text/javascript">
-    ! function($, n, e) {
-        var o = $();
-        $.fn.dropdownHover = function(e) {
-            return "ontouchstart" in document ? this : (o = o.add(this.parent()), this.each(function() {
-                function t(e) {
-                    o.find(":focus").blur(), h.instantlyCloseOthers === !0 && o.removeClass("open"), n.clearTimeout(c), i.addClass("open"), r.trigger(a)
-                }
-                var r = $(this),
-                        i = r.parent(),
-                        d = {
-                            delay: 100,
-                            instantlyCloseOthers: !0
-                        },
-                        s = {
-                            delay: $(this).data("delay"),
-                            instantlyCloseOthers: $(this).data("close-others")
-                        },
-                        a = "show.bs.dropdown",
-                        u = "hide.bs.dropdown",
-                        h = $.extend(!0, {}, d, e, s),
-                        c;
-                i.hover(function(n) {
-                    return i.hasClass("open") || r.is(n.target) ? void t(n) : !0
-                }, function() {
-                    c = n.setTimeout(function() {
-                        i.removeClass("open"), r.trigger(u)
-                    }, h.delay)
-                }), r.hover(function(n) {
-                    return i.hasClass("open") || i.is(n.target) ? void t(n) : !0
-                }), i.find(".dropdown-submenu").each(function() {
-                    var e = $(this),
-                            o;
-                    e.hover(function() {
-                        n.clearTimeout(o), e.children(".dropdown-menu").show(), e.siblings().children(".dropdown-menu").hide()
-                    }, function() {
-                        var t = e.children(".dropdown-menu");
-                        o = n.setTimeout(function() {
-                            t.hide()
-                        }, h.delay)
-                    })
-                })
-            }))
-        }, $(document).ready(function() {
-            $('[data-hover="dropdown"]').dropdownHover()
-        })
-    }(jQuery, this);
-</script>
