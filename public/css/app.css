@@ -56,13 +56,7 @@ h4.panel-title {
     height: auto;
 }
 
-
-
-
-
 /* The Modal (background) */
-
-
 .modal-contact-forma-c {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -103,9 +97,6 @@ h4.panel-title {
     cursor: pointer;
 }
 
-
-
-
 .modal-contact-forma-c .dark #contact_form input[type=text], .dark #contact_form textarea, .dark #contact_form input[type=email]{
     font-size:15px;
     margin-bottom:20px;
@@ -134,5 +125,6 @@ h4.panel-title {
     height:90px;
 }
 
-
-
+#index-vertical-menu{
+    border-right: 0.1em  solid rgba(26, 5, 5, 0.11);
+}

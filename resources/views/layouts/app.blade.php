@@ -37,7 +37,7 @@
         </header>
 
         <div id="wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid" id="main-container">
                 <div class="row">
                      @yield('content') </div>
                 </div>

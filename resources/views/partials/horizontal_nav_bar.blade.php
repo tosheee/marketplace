@@ -61,7 +61,7 @@
                             <li><a href="{{ route('login') }}">Sing in</a></li>
                             <li><a href="{{ route('register') }}">Sing up</a></li>
                         @else
-                            <li><a href="#">{{ Auth::user()->name }}</a></li>
+                            <li><a href="/account/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a></li>
                             <li><a href="/store/view_user_orders/{{ Auth::user()->id }}">My orders</a></li>
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
