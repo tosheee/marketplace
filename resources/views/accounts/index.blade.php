@@ -138,12 +138,9 @@
                     <br/>
                     <br/>
                 @endforeach
-
-
-
-            @else
-                <p>No orders</p>
-            @endif
+        @else
+            <p>No orders</p>
+        @endif
 
     </div>
 @endsection
