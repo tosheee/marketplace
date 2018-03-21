@@ -73,6 +73,21 @@ Route::get('/account/products/{id}', ['uses' => 'AccountsController@insertedProd
 
 Route::get('/account/{id}', ['uses' => 'AccountsController@index', 'as'   => 'accounts.index']);
 
+
+/*
+  Rouse::get('/author', [
+    'uses' => 'AppController@getGenerateArticle',
+    'as'   => 'author.article',
+    'middleware' => 'roles',
+    'roles' => ['Admin', 'Author']
+]);
+ */
+
+
+
+
+
+
 // Admin
 
 /*
