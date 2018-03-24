@@ -14,82 +14,77 @@ class SubCategoryTableSeeder extends Seeder
     public function run()
     {
         $sub_category = new SubCategory();
-        $sub_category->category_id = Category::where('name', 'Орхидеи')->first()->id;
-        $sub_category->name = 'Градински Орхидеи';
-        $sub_category->identifier = 'garden_orchid';
+        $sub_category->category_id = Category::where('name', 'Arts & Crafts')->first()->id;
+        $sub_category->name = 'Paintings';
+        $sub_category->identifier = preg_replace('/\s+/', '_', trim('Paintings'));
         $sub_category->save();
 
         $sub_category = new SubCategory();
-        $sub_category->category_id = Category::where('name', 'Орхидеи')->first()->id;
-        $sub_category->name = 'Зигопеталум';
-        $sub_category->identifier = 'zigopetalum';
+        $sub_category->category_id = Category::where('name', 'Arts & Crafts')->first()->id;
+        $sub_category->name = 'Sculptures';
+        $sub_category->identifier = preg_replace('/\s+/', '_', trim('Sculptures'));
         $sub_category->save();
 
         $sub_category = new SubCategory();
-        $sub_category->category_id = Category::where('name', 'Орхидеи')->first()->id;
-        $sub_category->name = 'Камбрия';
-        $sub_category->identifier = 'kambia';
+        $sub_category->category_id = Category::where('name', 'Arts & Crafts')->first()->id;
+        $sub_category->name = 'Pottery';
+        $sub_category->identifier = preg_replace('/\s+/', '_', trim('Pottery'));
         $sub_category->save();
 
 
         $sub_category = new SubCategory();
-        $sub_category->category_id = Category::where('name', 'Орхидеи')->first()->id;
-        $sub_category->name = 'Пафиопедилум';
-        $sub_category->identifier = 'pafiopedium';
+        $sub_category->category_id = Category::where('name', 'Home & Garden')->first()->id;
+        $sub_category->name = 'Lightings';
+        $sub_category->identifier = preg_replace('/\s+/', '_', trim('Lightings'));
         $sub_category->save();
 
         $sub_category = new SubCategory();
-        $sub_category->category_id = Category::where('name', 'Градински растения')->first()->id;
-        $sub_category->name = 'Водни растения';
-        $sub_category->identifier = 'water_plants';
+        $sub_category->category_id = Category::where('name', 'Home & Garden')->first()->id;
+        $sub_category->name = 'Textiles';
+        $sub_category->identifier = preg_replace('/\s+/', '_', trim('Textiles'));
         $sub_category->save();
 
         $sub_category = new SubCategory();
-        $sub_category->category_id = Category::where('name', 'Градински растения')->first()->id;
-        $sub_category->name = 'За балкона';
-        $sub_category->identifier = 'for_the_balcony';
+        $sub_category->category_id = Category::where('name', 'Home & Garden')->first()->id;
+        $sub_category->name = 'Furniture and Accessories';
+        $sub_category->identifier = preg_replace('/\s+/', '_', trim('Furniture and Accessories'));
         $sub_category->save();
 
         $sub_category = new SubCategory();
-        $sub_category->category_id = Category::where('name', 'Градински растения')->first()->id;
-        $sub_category->name = 'За градината';
-        $sub_category->identifier = 'for_the_garden';
+        $sub_category->category_id = Category::where('name', 'Clothes & Accessories')->first()->id;
+        $sub_category->name = 'Women';
+        $sub_category->identifier = preg_replace('/\s+/', '_', trim('Women'));
         $sub_category->save();
 
         $sub_category = new SubCategory();
-        $sub_category->category_id = Category::where('name', 'Стайни растения')->first()->id;
-        $sub_category->name = 'Цъфтящи';
-        $sub_category->identifier = 'flowering';
+        $sub_category->category_id = Category::where('name', 'Clothes & Accessories')->first()->id;
+        $sub_category->name = 'Girls';
+        $sub_category->identifier = preg_replace('/\s+/', '_', trim('Girls'));
         $sub_category->save();
 
         $sub_category = new SubCategory();
-        $sub_category->category_id = Category::where('name', 'Стайни растения')->first()->id;
-        $sub_category->name = 'Листнодекоративни';
-        $sub_category->identifier = 'leaf_decorative';
+        $sub_category->category_id = Category::where('name', 'Clothes & Accessories')->first()->id;
+        $sub_category->name = 'Men';
+        $sub_category->identifier = preg_replace('/\s+/', '_', trim('Men'));
         $sub_category->save();
 
         $sub_category = new SubCategory();
-        $sub_category->category_id = Category::where('name', 'Стайни растения')->first()->id;
-        $sub_category->name = 'Кактуси и сукуленти';
-        $sub_category->identifier = 'cacti_and_succulents';
+        $sub_category->category_id = Category::where('name', 'Health & Beauty')->first()->id;
+        $sub_category->name = 'Fragrances';
+        $sub_category->identifier = preg_replace('/\s+/', '_', trim('Fragrances'));
         $sub_category->save();
 
         $sub_category = new SubCategory();
-        $sub_category->category_id = Category::where('name', 'Стайни растения')->first()->id;
-        $sub_category->name = 'Бонсаи';
-        $sub_category->identifier = 'bonsai';
+        $sub_category->category_id = Category::where('name', 'Health & Beauty')->first()->id;
+        $sub_category->name = 'Natural & Bio';
+        $sub_category->identifier = preg_replace('/\s+/', '_', trim('Natural & Bio'));
         $sub_category->save();
 
         $sub_category = new SubCategory();
-        $sub_category->category_id = Category::where('name', 'Стайни растения')->first()->id;
-        $sub_category->name = 'Палми';
-        $sub_category->identifier = 'palm';
+        $sub_category->category_id = Category::where('name', 'Health & Beauty')->first()->id;
+        $sub_category->name = 'Luxury Beauty';
+        $sub_category->identifier = preg_replace('/\s+/', '_', trim('Luxury Beauty'));
         $sub_category->save();
 
-        $sub_category = new SubCategory();
-        $sub_category->category_id = Category::where('name', 'Рози')->first()->id;
-        $sub_category->name = 'Рози';
-        $sub_category->identifier = 'rose';
-        $sub_category->save();
     }
 }

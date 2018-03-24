@@ -17,10 +17,21 @@ class UserTableSeeder extends Seeder
         $role_buyer = Role::where('name', 'Buyer')->first();
         $role_seller = Role::where('name', 'Seller')->first();
 
+        $toshe = new User();
+        $toshe->name = 'todor';
+        $toshe->email = 'tosheee@abv.bg';
+        $toshe->password = bcrypt('kawasaki');
+        $toshe->provider = '';
+        $toshe->provider_id = '';
+        $toshe->save();
+        $toshe->roles()->attach($role_seller);
+
         $user = new User();
         $user->name = 'User';
         $user->email = 'user@mail.com';
         $user->password = bcrypt('user_user');
+        $user->provider = '';
+        $user->provider_id = '';
         $user->save();
         $user->roles()->attach($role_user);
 
@@ -28,6 +39,8 @@ class UserTableSeeder extends Seeder
         $buyer->name = 'Buyer';
         $buyer->email = 'buyer@mail.com';
         $buyer->password = bcrypt('buyer_buyer');
+        $buyer->provider = '';
+        $buyer->provider_id = '';
         $buyer->save();
         $buyer->roles()->attach($role_buyer);
 
@@ -35,6 +48,8 @@ class UserTableSeeder extends Seeder
         $seller->name = 'Seller';
         $seller->email = 'seller@mail.com';
         $seller->password = bcrypt('seller_seller');
+        $seller->provider = '';
+        $seller->provider_id = '';
         $seller->save();
         $seller->roles()->attach($role_seller);
     }
