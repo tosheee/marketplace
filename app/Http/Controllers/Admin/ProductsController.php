@@ -149,7 +149,7 @@ class ProductsController extends Controller
         $product->seller_id       = $request->input('seller_id');
         $product->category_id     = $request->input('category_id');
         $product->sub_category_id = $request->input('sub_category_id');
-        $product->identifier      = $request->input('identifier');
+        $product->identifier      = preg_replace('/\s+/', '_', strtolower($request->input('sub_category_id')));
         $product->active          = $request->input('active');
         $product->sale            = $request->input('sale');
         $product->recommended     = $request->input('recommended');
@@ -160,7 +160,7 @@ class ProductsController extends Controller
         session()->flash('notif', 'Продукта е създаден');
         return redirect('admin/products/create');
     }
-
+//preg_replace('/\s+|\s/', '_', strtolower($str))
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
