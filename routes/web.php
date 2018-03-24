@@ -1,5 +1,7 @@
 <?php
 
+
+
 Route::get('/', 'StoreController@index');
 
 View::composer('*', function($view) { $view->with('siteViewInformation', App\Admin\InfoCompany::orderBy('created_at', 'desc')->first()); });
@@ -16,7 +18,17 @@ View::composer('*', function($view) {
     $view->with('pagesButtonsRender', App\Admin\Page::where('active_page', true)->get());
 });
 
+
 Auth::routes();
+
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+//facebook socilite
+
+
+
 
 Route::get('/page', [ 'uses' => 'StoreController@getShowPages', 'as'  => 'store.showPage' ]);
 
