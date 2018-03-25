@@ -191,24 +191,8 @@ class StoreController extends Controller
         	return $this->index();
         }
     }
-    
-    // show users orders
-    public function viewUserOrders($id)
-    {
-        if (Auth::check() && Auth::user()->id == $id)
-        {
-            
-            $userOrders = Order::where('user_id', $id)->orderBy('created_at', 'desc')->paginate(18);
 
-            return view('store.view-user-orders')->with('user_orders', $userOrders);
-        }
-        else
-        {
-          return view('errors.404');
-        }
-    }
-
-    // add & remove products
+     // add & remove products
     public function getAddToCart(Request $request)
     {
         $product = Product::find($request->input('product_id'));

@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Image;
+use App\Order;
 use App\Admin\Country;
 use App\Admin\Seller;
 
 use App\Admin\SubCategory;
 use App\Admin\Category;
 use App\Admin\Product;
-use App\Order;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Image;
+
 
 class AccountsController extends Controller
 {
@@ -27,6 +30,22 @@ class AccountsController extends Controller
         $ordersIntoSeller = Order::where('user_id', $id)->orderBy('created_at', 'desc')->get();
 
         return view('accounts.index')->with('ordersIntoSeller', $ordersIntoSeller);
+    }
+
+    // show users orders
+    public function viewUserOrders($id)
+    {
+        if (Auth::check() && Auth::user()->id == $id)
+        {
+
+            $userOrders = Order::where('user_id', $id)->orderBy('created_at', 'desc')->paginate(18);
+
+            return view('accounts.view-user-orders')->with('user_orders', $userOrders);
+        }
+        else
+        {
+            return view('errors.404');
+        }
     }
 
     public function orders()
@@ -206,49 +225,4 @@ class AccountsController extends Controller
         return redirect('/accounts');
     }
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

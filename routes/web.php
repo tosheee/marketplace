@@ -1,9 +1,5 @@
 <?php
-
-
-
-Route::get('/', 'StoreController@index');
-
+//buttons -> refactor
 View::composer('*', function($view) { $view->with('siteViewInformation', App\Admin\InfoCompany::orderBy('created_at', 'desc')->first()); });
 
 View::composer('*', function($view) { $view->with('categoriesButtonsName', App\Admin\Category::all()); });
@@ -17,75 +13,54 @@ View::composer('*', function($view) {$view->with('allSliderData', App\Admin\Slid
 View::composer('*', function($view) {
     $view->with('pagesButtonsRender', App\Admin\Page::where('active_page', true)->get());
 });
+//////////////////////////////////////////////\
 
-
+//auth
 Auth::routes();
-
-Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
-
-Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
-
 //facebook socilite
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+//////////////////////////////
 
-
-
-
+//store
+Route::get('/', 'StoreController@index');
 Route::get('/page', [ 'uses' => 'StoreController@getShowPages', 'as'  => 'store.showPage' ]);
-
 Route::get('/store', ['uses' => 'StoreController@index', 'as'   => 'store.index']);
-
-Route::get('/store/view_user_orders/{id}', [ 'uses' => 'StoreController@viewUserOrders', 'as'   => 'store.index']);
-
 Route::get('/store/search', ['uses' => 'SearchController@search', 'as'   => 'store.search']);
-
 Route::get('/store/{id}', ['uses' => 'StoreController@show', 'as'   => 'store.show']);
 
 
-
-Route::post('admin/products/create/{id?}', function($id = null) {
-
-    $subCategoryAttributes = App\Admin\SubCategory::where('category_id', $id)->get();
-    $subCategoryOptions = array();
-    foreach($subCategoryAttributes as $key => $subCatAttribute)
-    {
-        $subCategoryOptions[$key] = [$subCatAttribute->id, $subCatAttribute->name, $subCatAttribute->identifier];
-    }
-
-    return $subCategoryOptions;
-});
-
-
+//store
 Route::post('/add-to-cart', 'StoreController@getAddToCart');
-
 Route::post('/send-user-message', 'StoreController@postUserMessage');
-
 Route::post('/store/like_product/{id}', 'StoreController@getLikeProduct');
-
 Route::post('/remove/{id}', ['uses' => 'StoreController@getRemoveItem', 'as'  => 'store.remove']);
-
 Route::get('/checkout', [ 'uses' => 'StoreController@getCheckout', 'as'  => 'store.checkout']);
 Route::post('/checkout', 'StoreController@postCheckout');
-
 Route::get('/shopping-cart', ['uses' => 'StoreController@getCart', 'as'  => 'store.shoppingCart']);
-
-
-
+/////////////////////////////////////////////////////
+/////////////////////////////////
 
 //Accounts
-
-
-
+Route::get('/account/view_user_orders/{id}', [ 'uses' => 'AccountsController@viewUserOrders', 'as'   => 'store.index']);
 Route::get('/account/create_seller', 'AccountsController@createSeller');
 Route::post('/account/store_seller', ['uses' => 'AccountsController@storeSeller', 'as'  => 'accounts.store_seller']);
-
 Route::get('/account/create_product', 'AccountsController@createProduct');
 Route::post('/account/store_product', ['uses' => 'AccountsController@storeProduct', 'as'  => 'accounts.store_product']);
-
 Route::get('/account/products/{id}', ['uses' => 'AccountsController@insertedProducts', 'as'   => 'accounts.insertedProducts']);
-
 Route::get('/account/{id}', ['uses' => 'AccountsController@index', 'as'   => 'accounts.index']);
+/////////////////////////////////////////
 
 
+//sellers
+
+
+////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
 /*
   Rouse::get('/author', [
     'uses' => 'AppController@getGenerateArticle',
@@ -94,11 +69,13 @@ Route::get('/account/{id}', ['uses' => 'AccountsController@index', 'as'   => 'ac
     'roles' => ['Admin', 'Author']
 ]);
  */
-
-
-
-
-
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
 
 // Admin
 
@@ -116,6 +93,18 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 
 });
 */
+
+Route::post('admin/products/create/{id?}', function($id = null) {
+
+    $subCategoryAttributes = App\Admin\SubCategory::where('category_id', $id)->get();
+    $subCategoryOptions = array();
+    foreach($subCategoryAttributes as $key => $subCatAttribute)
+    {
+        $subCategoryOptions[$key] = [$subCatAttribute->id, $subCatAttribute->name, $subCatAttribute->identifier];
+    }
+
+    return $subCategoryOptions;
+});
 
 Route::get('/admin/products/search', ['uses' => 'Admin\ProductsController@search_category', 'as'   => 'search_category' ]);
 

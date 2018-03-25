@@ -18,16 +18,15 @@
         <div class="collapse navbar-collapse navbar-1" style="margin-top: 0px;">
             <ul class="nav navbar-nav">
                 <li class="dropdown megaDropMenu">
-
-                    <a href="/store" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false" id="store-button">Departments<i class="fa fa-angle-down ml-5"></i></a>
+                    <a href="/store" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false" id="store-button">Departments <i class="fa fa-angle-down ml-5"></i></a>
                     <ul class="dropdown-menu row">
                         @foreach($categoriesButtonsName as $categoryButton)
                             <li class="col-sm-3 col-xs-12">
                                 <ul class="list-unstyled">
-                                    <li><a href="/store/search?category={{ $categoryButton->id }}">{{ $categoryButton->name }}</a></li>
+                                    <li><a href="/store/search?category={{ $categoryButton->id }}"><strong>{{ $categoryButton->name }}</strong></a></li>
                                     @foreach($subCategoriesButtonsName as $subCategoryButton)
                                         @if ($subCategoryButton->category_id == $categoryButton->id)
-                                            <li><a href="/store/search?sub_category={{ $subCategoryButton->identifier }}">{{ $subCategoryButton->name }}</a></li>
+                                            <li class="category-name"><a href="/store/search?sub_category={{ $subCategoryButton->identifier }}">{{ $subCategoryButton->name }}</a></li>
                                         @endif
                                     @endforeach
                                 </ul>
@@ -58,8 +57,10 @@
                             <li><a href="{{ route('login') }}">Sing in</a></li>
                             <li><a href="{{ route('register') }}">Sing up</a></li>
                         @else
-                            <li><a href="/account/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a></li>
-                            <li><a href="/store/view_user_orders/{{ Auth::user()->id }}">My orders</a></li>
+                            <li>
+                                <a href="/account/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a>
+                            </li>
+
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
