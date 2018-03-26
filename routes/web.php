@@ -8,6 +8,9 @@ View::composer('*', function($view) {$view->with('allSliderData',            App
 View::composer('*', function($view) {$view->with('pagesButtonsRender',       App\Admin\Page::where('active_page', true)->get());});
 //////////////////////////////////////////////\
 
+
+Route::get('/verify/{token}', 'VerifyController@verify')->name('verify');
+
 //auth
 Auth::routes();
 //facebook socilite
@@ -47,6 +50,9 @@ Route::group(['prefix' => 'account'], function() {
 /////////////////////////////////////////
 
 //sellers
+Route::group(['prefix' => 'sellers'], function() {
+
+});
 
 
 

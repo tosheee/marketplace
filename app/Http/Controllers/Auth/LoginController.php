@@ -27,6 +27,15 @@ class LoginController extends Controller
         return Session::get('backUrl') ? Session::get('backUrl') : $this->redirectTo;
     }
 
+
+
+
+
+
+
+
+
+
     public function redirectToProvider($provider)
     {
         return Socialite::driver($provider)->redirect();
@@ -50,8 +59,8 @@ class LoginController extends Controller
         return User::create([
             'name'     => $user->name,
             'email'    => $user->email,
-            #'provider' => $provider,
-            #'provider_id' => $user->id
+            'provider' => $provider,
+            'provider_id' => $user->id
         ]);
     }
 }
