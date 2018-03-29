@@ -5,4 +5,5 @@
     <li><a href="#">Edit Email</a></li>
     <li><a href="#">Messages</a></li>
     <li><a href="#">Logout</a></li>
+    <li><a href="/account/create_seller">Create seller</a></li>
 </ul>
