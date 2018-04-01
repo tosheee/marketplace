@@ -24,6 +24,12 @@
                 <input class="form-control" placeholder="Password" name="password" type="text" value="{{ $user->password }}" id="password">
             </div>
 
+            <div class="form-group">
+                User   <input type="checkbox" {{ $user->hasRole('User') ? 'checked' : '' }}   name="role_user">
+                Buyer  <input type="checkbox" {{ $user->hasRole('Buyer') ? 'checked' : '' }}   name="role_buyer">
+                Seller <input type="checkbox" {{ $user->hasRole('Seller') ? 'checked' : '' }} name="role_seller">
+            </div>
+
             <input name="_method" type="hidden" value="PUT">
             <input class="btn btn-primary" type="submit" value="Промени">
         </form>

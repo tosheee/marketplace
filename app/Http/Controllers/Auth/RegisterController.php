@@ -42,16 +42,31 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'token' => str_random(25),
+            'token' => str_random(50),
         ]);
-        //$user->roles()->attach(Role::where('name', 'User')->first());
-        // Auth::login($user);
-        //return redirect()->route('main');
+
+        $user->roles()->attach(Role::where('name', 'User')->first());
+
+        return $user;
+
+
+        //Auth::login($user);
+
+        //return redirect()->route('/');
 
         //$user->notify(new VerifyEmail($user));
 
-        $user->sendVerificationsEmail();
+        //$user->sendVerificationsEmail();
 
-        return $user;
+        /*
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->token = str_random(50);
+        $user->provider = '';
+        $user->provider_id = '';
+        $user->save();
+        */
     }
 }

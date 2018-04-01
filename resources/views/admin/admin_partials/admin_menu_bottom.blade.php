@@ -75,6 +75,7 @@
             $("#arow14").toggleClass("fa-chevron-down");
         });
 
+
         $("#menu-icon").click(function() {
             $("#chang-menu-icon").toggleClass("fa-bars");
             $("#chang-menu-icon").toggleClass("fa-times");

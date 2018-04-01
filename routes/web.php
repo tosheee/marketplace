@@ -37,6 +37,7 @@ Route::group(['prefix' => 'store'], function() {
     Route::get('/shopping-cart',      ['uses' => 'StoreController@getCart',       'as' => 'store.shoppingCart']);
 });
 /////////////////////////////////
+
 //Accounts
 Route::group(['prefix' => 'account'], function() {
     Route::get('/view_user_orders/{id}', ['uses' => 'AccountsController@viewUserOrders',   'as' => 'store.index']);
@@ -84,6 +85,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::resource('/user_messages',  'UserMessagesController');
     Route::resource('/cities',         'CitiesController');
     Route::resource('/countries',      'CountriesController');
+    Route::resource('/sellers',        'SellersController');
 });
 
 Route::post('admin/products/create/{id?}', function($id = null) {

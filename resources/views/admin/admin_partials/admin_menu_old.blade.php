@@ -78,9 +78,9 @@
                     
                       <li class="panel">
                         <a id="panel2" href="javascript:;" data-toggle="collapse" data-target="#inbox"> <i class="fa fa-inbox"></i> Съобщения
-                            
+
                              <?php $allUserMessage = count(App\Admin\UserMessage::all()); ?>
-                             
+
                              <?php  $newUserMessage = count(App\Admin\UserMessage::all()->where('answer', false)) ?>
                             @if ($newUserMessage == 0)
                                 <span class="label label-warning">Няма нови съобщения</span>
@@ -176,34 +176,54 @@
                             <li> <a href="/admin/info_company/"><i class="fa fa-angle-double-right"></i> Информация за сайта</a> </li>
                         </ul>
                     </li>
-                    
-                     <li class="panel">
-                        <a id="panel10" href="javascript:;" data-toggle="collapse" data-target="#pie-Chart">
+
+                    <li class="panel">
+                        <a id="panel10" href="javascript:;" data-toggle="collapse" data-target="#slider">
                             <i class="fa fa-bar-chart"></i> Слидер
                             <i class="fa fa fa-chevron-left pull-right" id="arow10"></i> </a>
-                        <ul class="collapse nav" id="pie-Chart">
+                        <ul class="collapse nav" id="slider">
                             <li> <a href="/admin/slider/"><i class="fa fa-angle-double-right"></i>Всички снимки в слайдер </a> </li>
                             <li> <a href="/admin/slider/create"><i class="fa fa-angle-double-right"></i> Добавяне на снимка</a> </li>
                         </ul>
                      </li>
 
                     <li class="panel">
-                        <a id="panel11" href="javascript:;" data-toggle="collapse" data-target="#pie-Chart">
+                        <a id="panel11" href="javascript:;" data-toggle="collapse" data-target="#countries">
                             <i class="fa fa-bar-chart"></i> Countries
                             <i class="fa fa fa-chevron-left pull-right" id="arow11"></i> </a>
-                        <ul class="collapse nav" id="pie-Chart">
-                            <li> <a href="/admin/slider/"><i class="fa fa-angle-double-right"></i>Всички снимки в слайдер </a> </li>
-                            <li> <a href="/admin/slider/create"><i class="fa fa-angle-double-right"></i> Добавяне на снимка</a> </li>
+                        <ul class="collapse nav" id="countries">
+                            <li> <a href="/admin/countries/"><i class="fa fa-angle-double-right"></i>All countries </a> </li>
+                            <li> <a href="/admin/countries/create"><i class="fa fa-angle-double-right"></i> Add country</a> </li>
                         </ul>
                     </li>
 
                     <li class="panel">
-                        <a id="panel12" href="javascript:;" data-toggle="collapse" data-target="#pie-Chart">
+                        <a id="panel12" href="javascript:;" data-toggle="collapse" data-target="#cities">
                             <i class="fa fa-bar-chart"></i> Cities
                             <i class="fa fa fa-chevron-left pull-right" id="arow12"></i> </a>
-                        <ul class="collapse nav" id="pie-Chart">
-                            <li> <a href="/admin/slider/"><i class="fa fa-angle-double-right"></i>Всички снимки в слайдер </a> </li>
-                            <li> <a href="/admin/slider/create"><i class="fa fa-angle-double-right"></i> Добавяне на снимка</a> </li>
+                        <ul class="collapse nav" id="cities">
+                            <li> <a href="/admin/cities/"><i class="fa fa-angle-double-right"></i>All cities </a> </li>
+                            <li> <a href="/admin/cities/create"><i class="fa fa-angle-double-right"></i> Add city</a> </li>
+                        </ul>
+                    </li>
+
+                    <li class="panel">
+                        <a id="panel13" href="javascript:;" data-toggle="collapse" data-target="#sellers">
+                            <i class="fa fa-bar-chart"></i> Sellers
+                            <i class="fa fa fa-chevron-left pull-right" id="arow13"></i> </a>
+                        <ul class="collapse nav" id="sellers">
+                            <li> <a href="/admin/sellers/"><i class="fa fa-angle-double-right"></i>All sellers </a> </li>
+                            <li> <a href="/admin/sellers/create"><i class="fa fa-angle-double-right"></i> Create seller</a> </li>
+                        </ul>
+                    </li>
+
+                    <li class="panel">
+                        <a id="panel13" href="javascript:;" data-toggle="collapse" data-target="#sellers">
+                            <i class="fa fa-bar-chart"></i> Sellers
+                            <i class="fa fa fa-chevron-left pull-right" id="arow13"></i> </a>
+                        <ul class="collapse nav" id="sellers">
+                            <li> <a href="/admin/sellers/"><i class="fa fa-angle-double-right"></i>All sellers </a> </li>
+                            <li> <a href="/admin/sellers/create"><i class="fa fa-angle-double-right"></i> Create seller</a> </li>
                         </ul>
                     </li>
 
@@ -255,6 +275,7 @@
                 </div>
 
                 <div class="row padding-top">
-                 <script>
+
+            <script>
         		$('#menu-scroll').hide();
     		</script>

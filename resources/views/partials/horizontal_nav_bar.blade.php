@@ -61,10 +61,21 @@
                             <li><a href="{{ route('login') }}">Sing in</a></li>
                             <li><a href="{{ route('register') }}">Sing up</a></li>
                         @else
-                            <li>
-                                <a href="/account/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a>
-                            </li>
+                            <?php $user = App\User::where('email', Auth::user()->email)->first(); ?>
 
+                            @if($user->hasRole('Seller'))
+                                <li>
+                                    <a href="/sellers/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a>
+                                </li>
+                            @elseif($user->hasRole('Buyer'))
+                                <li>
+                                    <a href="/buyers/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="/account/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a>
+                                </li>
+                            @endif
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
