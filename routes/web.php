@@ -7,12 +7,13 @@ View::composer('*', function($view) {$view->with('subCategories',            App
 View::composer('*', function($view) {$view->with('allSliderData',            App\Admin\Slider::all());});
 View::composer('*', function($view) {$view->with('pagesButtonsRender',       App\Admin\Page::where('active_page', true)->get());});
 //////////////////////////////////////////////\
-
-
 Route::get('/verify/{token}', 'VerifyController@verify')->name('verify');
 
 //auth
+
 Auth::routes();
+
+
 //facebook socilite
 Route::group(['namespace' => 'Auth', 'prefix' => 'login'], function() {
     Route::get('/{provider}', 'LoginController@redirectToProvider');
@@ -40,18 +41,22 @@ Route::group(['prefix' => 'store'], function() {
 
 //Accounts
 Route::group(['prefix' => 'account'], function() {
-    Route::get('/view_user_orders/{id}', ['uses' => 'AccountsController@viewUserOrders',   'as' => 'store.index']);
-    Route::get('/create_seller',         ['uses' => 'AccountsController@createSeller']);
-    Route::post('/store_seller',         ['uses' => 'AccountsController@storeSeller',      'as' => 'accounts.store_seller']);
-    Route::get('/create_product',        ['uses' => 'AccountsController@createProduct']);
-    Route::post('/store_product',        ['uses' => 'AccountsController@storeProduct',     'as' => 'accounts.store_product']);
-    Route::get('/products/{id}',         ['uses' => 'AccountsController@insertedProducts', 'as' => 'accounts.insertedProducts']);
-    Route::get('/{id}',                  ['uses' => 'AccountsController@index',            'as' => 'accounts.index']);
+    Route::get('/{id}',                  ['uses' => 'AccountsController@index',            'as' => 'accounts.index',         'middleware' => 'roles', 'roles' => ['User'] ]);
+    Route::get('/view_user_orders/{id}', ['uses' => 'AccountsController@viewUserOrders',   'as' => 'store.index',            'middleware' => 'roles', 'roles' => ['User'] ]);
+    Route::get('/create_seller',         ['uses' => 'AccountsController@createSeller',     'as' => 'accounts.create_seller', 'middleware' => 'roles', 'roles' => ['User', 'Seller'] ]);
+    Route::post('/store_seller',         ['uses' => 'AccountsController@storeSeller',      'as' => 'accounts.store_seller',  'middleware' => 'roles', 'roles' => ['User'] ]);
 });
 /////////////////////////////////////////
 
 //sellers
 Route::group(['prefix' => 'sellers'], function() {
+    Route::get('/{user_id}',                       ['uses' => 'SellersController@index',            'as' => 'sellers.index',            'middleware' => 'roles', 'roles' => ['Seller'] ]);
+    Route::get('/{user_id}/create_product',        ['uses' => 'SellersController@createProduct',                                        'middleware' => 'roles', 'roles' => ['Seller'] ]);
+    Route::post('/store_product',                  ['uses' => 'SellersController@storeProduct',     'as' => 'sellers.store_product',    'middleware' => 'roles', 'roles' => ['Seller'] ]);
+    Route::get('/{user_id}/products/{id}',         ['uses' => 'SellersController@insertedProducts', 'as' => 'sellers.insertedProducts', 'middleware' => 'roles', 'roles' => ['Seller'] ]);
+    Route::get('/{user_id}/create_seller',         ['uses' => 'SellersController@createSeller',     'as' => 'sellers.create_seller',    'middleware' => 'roles', 'roles' => ['Seller'] ]);
+    Route::post('/{user_id}/store_seller',         ['uses' => 'SellersController@storeSeller',      'as' => 'sellers.store_seller',     'middleware' => 'roles', 'roles' => ['Seller'] ]);
+
 
 });
 

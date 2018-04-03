@@ -2,13 +2,13 @@
 
 @section('content')
     <div class="col-md-2">
-        @include('partials.account_navigation')
+        @include('partials.seller_navigation')
     </div>
 
 
     <div class="col-md-9">
 
-    <a class="btn btn-primary" href="/account/create_seller">New product</a>
+    <a class="btn btn-primary" href="/sellers/{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}/create_product">New product</a>
     <br/>
     <br/>
 
@@ -272,6 +272,6 @@
 
 
 @else
-    <p>Няма намерени продукти</p>
+    <p>No products</p>
 @endif
 @endsection

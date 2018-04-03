@@ -1,4 +1,13 @@
 <ul id="ver-account-menu">
+    <span class=""><b>Seller</b></span>
+    <li><a href="/sellers/{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}">Dashboard Seller</a></li>
+    <li><a href="/sellers/{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}/create_seller">Create other seller</a></li>
+
+    <li><a href="/sellers/{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}/create_product">Create product</a></li>
+    <li><a href="/sellers/{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}/products/{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}">Inserted products</a></li>
+</ul>
+
+<ul id="ver-account-menu">
     <span class=""><b>Customer</b></span>
     <li><a href="#">Address Book</a></li>
     <li><a href="#">Wish List</a></li>
@@ -9,12 +18,4 @@
     <li><a href="#">Reward Points</a></li>
     <li><a href="#">Returns</a></li>
     <li><a href="#">Transaction</a></li>
-</ul>
-
-<ul id="ver-account-menu">
-    <span class=""><b>Seller</b></span>
-    <li><a href="/account/{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}">Dashboard Seller</a></li>
-    <li><a href="/account/create_seller">Create seller</a></li>
-    <li><a href="/account/create_product">Create product</a></li>
-    <li><a href="/account/products/{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}">Inserted products</a></li>
 </ul>

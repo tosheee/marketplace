@@ -178,9 +178,9 @@
                 <p style="color:rgba(8, 9, 21, 0.96)"> {{ isset($descriptions['short_description']) ? $descriptions['short_description'] : '' }} </p>
                 <!-- Precios -->
                 <h6 class="title-price"><small></small></h6>
-                <h3 style="margin-top: 0px;">Цена: {{ number_format($descriptions['price'], 2) }} {{ $descriptions['currency'] }}
+                <h3 style="margin-top: 0px;">Цена: {{ $descriptions['price'] }} {{ $descriptions['currency'] }}
                     @if (isset($descriptions['old_price']))
-                        <span class="old-price">   {{ number_format($descriptions['old_price'], 2) }} {{ $descriptions['currency'] }}</span>
+                        <span class="old-price">   {{ $descriptions['old_price'] }} {{ $descriptions['currency'] }}</span>
                     @endif
                 </h3>
                 <!-- Detalles especificos del producto -->

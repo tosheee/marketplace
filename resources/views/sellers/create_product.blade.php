@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-md-2">
-        @include('partials.account_navigation')
+        @include('partials.seller_navigation')
     </div>
 
 
@@ -10,7 +10,7 @@
 
 
     <div class="basic-grey">
-        <form action="{{ route('accounts.store_product') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('sellers.store_product') }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
 
             <input type="hidden" name="seller_id" value="{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}" class="label-values"/>
