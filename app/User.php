@@ -5,6 +5,7 @@ namespace App;
 use App\Notifications\VerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Cache;
 
 
 class User extends Authenticatable
@@ -29,6 +30,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function isOnline(){
+
+        return Cache::has('user-online-'.$this->id);
+    }
 
     public function orders()
     {

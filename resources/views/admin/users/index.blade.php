@@ -18,7 +18,15 @@
                 </tr>
                 @foreach($users as $user)
                     <tr>
-                        <td><a href="/admin/users/{{ $user->id }}">{{ $user->name }}</a></td>
+                        <td>
+                            @if($user->isOnline())
+                                <i class="fa fa-user mr-5" style="color: #0ade43"></i>
+                            @else
+                                <i class="fa fa-user mr-5" style="color: #f5021d"></i>
+                            @endif
+                                <a href="/admin/users/{{ $user->id }}">{{ $user->name }}</a>
+                        </td>
+
                         <td>{{ $user->email }}</td>
                         <td>
                             User   <input type="checkbox" {{ $user->hasRole('User') ? 'checked' : '' }}   name="role_user">
