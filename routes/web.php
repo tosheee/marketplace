@@ -41,9 +41,9 @@ Route::group(['prefix' => 'store'], function() {
 
 //Accounts
 Route::group(['prefix' => 'account'], function() {
-    Route::get('/{id}',                  ['uses' => 'AccountsController@index',            'as' => 'accounts.index',         'middleware' => 'roles', 'roles' => ['User'] ]);
-    Route::get('/view_user_orders/{id}', ['uses' => 'AccountsController@viewUserOrders',   'as' => 'store.index',            'middleware' => 'roles', 'roles' => ['User'] ]);
-    Route::get('/create_seller',         ['uses' => 'AccountsController@createSeller',     'as' => 'accounts.create_seller', 'middleware' => 'roles', 'roles' => ['User', 'Seller'] ]);
+    Route::get('/{user_id}',                  ['uses' => 'AccountsController@index',            'as' => 'accounts.index',         'middleware' => 'roles', 'roles' => ['User'] ]);
+    Route::get('/{user_id}/view_user_orders/{id}', ['uses' => 'AccountsController@viewUserOrders',   'as' => 'store.index',            'middleware' => 'roles', 'roles' => ['User'] ]);
+    Route::get('/{user_id}/create_seller',         ['uses' => 'AccountsController@createSeller',     'as' => 'accounts.create_seller', 'middleware' => 'roles', 'roles' => ['User'] ]);
     Route::post('/store_seller',         ['uses' => 'AccountsController@storeSeller',      'as' => 'accounts.store_seller',  'middleware' => 'roles', 'roles' => ['User'] ]);
 });
 /////////////////////////////////////////
@@ -90,6 +90,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::resource('/user_messages',  'UserMessagesController');
     Route::resource('/cities',         'CitiesController');
     Route::resource('/countries',      'CountriesController');
+    Route::post('/sellers/{id}/postChangeRoles', ['uses' => 'SellersController@postChangeRoles', 'as' => 'sellers.postChangeRoles' ]);
+
     Route::resource('/sellers',        'SellersController');
 });
 

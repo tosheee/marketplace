@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
+use App\Role;
 use App\Admin\Seller;
 use App\Admin\Country;
 use Illuminate\Http\Request;
@@ -64,10 +66,7 @@ class SellersController extends Controller
         $countries = Country::all();
         $seller = Seller::find($id);
 
-        return view('admin.sellers.edit')->
-                        with('seller', $seller)->
-                        with('title', 'Edit seller')->
-                        with('countries', $countries);
+        return view('admin.sellers.edit')->with('seller', $seller)->with('title', 'Edit seller')->with('countries', $countries);
     }
 
     /**
@@ -122,5 +121,25 @@ class SellersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function postChangeRoles(Request $request, $id)
+    {
+        $user =  User::find($request->input('user_id'));
+        $user->roles()->detach();
+
+        if($request['role_user']){
+        $user->roles()->attach(Role::where('name', 'User')->first());
+        }
+
+        if($request['role_buyer']){
+            $user->roles()->attach(Role::where('name', 'Buyer')->first());
+        }
+
+        if($request['role_seller']){
+            $user->roles()->attach(Role::where('name', 'Seller')->first());
+        }
+
+        return redirect('admin/sellers')->with('success', 'The user is updated');
     }
 }

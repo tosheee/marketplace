@@ -27,11 +27,23 @@
                 <th></th>
             </tr>
             @foreach($all_sellers as $seller)
+
+                <?php $user = App\User::find($seller->user_id); ?>
+
                 <tr>
                     <td>{{ $seller->id }}</td>
                     <td><a href="/admin/sellers/{{ $seller->id }}">{{ $seller->brand_name }}</a></td>
-                    <td>{{ $seller->user_id }}</td>
+                    <td>
+                        {{ $seller->user_id }}<br/>
+                        User   <input type="checkbox" {{ $user->hasRole('User') ? 'checked' : '' }}   name="role_user">
+                        Buyer <input type="checkbox" {{ $user->hasRole('Buyer') ? 'checked' : '' }}   name="role_buyer">
+                        Seller <input type="checkbox" {{ $user->hasRole('Seller') ? 'checked' : '' }} name="role_seller">
+
+
+                    </td>
+
                     <td>{{ $seller->active_company }}</td>
+
                     <td>{{ $seller->brand_name }}</td>
                     <td>{{ $seller->brand_description }}</td>
                     <td>{{ $seller->brand_log }}</td>

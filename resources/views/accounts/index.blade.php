@@ -6,6 +6,10 @@
     </div>
 
     <div class="col-md-10">
+
+                {{ $success }}
+
+
         @if(count($ordersIntoSeller) > 0)
                 @foreach($ordersIntoSeller as $order)
                     <table class="table table-striped">

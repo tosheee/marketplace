@@ -4,8 +4,22 @@
     @include('admin.admin_partials.admin_menu_old')
 
     <div class="col-md-10">
+
+          <?php $user = App\User::find($seller->user_id); ?>
+              <form action="/admin/sellers/{{$seller->id}}/postChangeRoles" method="post" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                  <input type="hidden" name="user_id" value="{{ $user->id }}" class="label-values"/>
+                  User   <input type="checkbox" {{ $user->hasRole('User') ? 'checked' : '' }}   name="role_user">
+                  Buyer  <input type="checkbox" {{ $user->hasRole('Buyer') ? 'checked' : '' }}   name="role_buyer">
+                  Seller <input type="checkbox" {{ $user->hasRole('Seller') ? 'checked' : '' }} name="role_seller">
+                  <input type="submit" name="commit" value="Update" class="btn btn-default btn-xs">
+              </form>
+
+              <br/>
+              <br/>
+
         <div class="basic-grey">
-            <form action="{{ route('accounts.store_seller') }}" method="post" enctype="multipart/form-data">
+            <form action="/admin/sellers/{{$seller->id}}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <input type="hidden" name="user_id" value="{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}" class="label-values"/>

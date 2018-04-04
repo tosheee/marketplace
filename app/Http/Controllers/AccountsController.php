@@ -29,7 +29,7 @@ class AccountsController extends Controller
     public function index($id){
         $ordersIntoSeller = Order::where('user_id', $id)->orderBy('created_at', 'desc')->get();
 
-        return view('accounts.index')->with('ordersIntoSeller', $ordersIntoSeller);
+        return view('accounts.index')->with('ordersIntoSeller', $ordersIntoSeller)->with('success', 'Index page');
     }
 
     // show users orders
@@ -55,5 +55,49 @@ class AccountsController extends Controller
         return view('accounts.index')->with('orders', $orders)->with('title', 'Orders');
     }
 
+    public function createSeller(){
 
+        $countries = Country::all();
+
+        return view('accounts.create_seller')->with('countries', $countries);
+    }
+
+    public function storeSeller(Request $request)
+    {
+        /* $this->validate($request, [
+             'user_id'          => 'required',
+             'brand_name'       => 'required',
+             'company_name'     => 'required',
+             'company_uic'      => 'required',
+             'company_vat_registered' => 'required',
+             'company_phone'    => 'required',
+             'accept_terms'     => 'required',
+             'country_id'       => 'required',
+             'city_id'          => 'required',
+             'address_company'  => 'required',
+             'brand_description'=> 'required'
+
+         ]);*/
+
+
+        $seller = new Seller;
+
+        $seller->user_id        = $request->input('user_id');
+        $seller->active_company = 0;
+        $seller->brand_name     = $request->input('brand_name');
+        $seller->brand_description    = $request->input('brand_description');
+        $seller->brand_logo     = '';
+        $seller->brand_banner   = '';
+        $seller->company_name   = $request->input('company_name');
+        $seller->company_vat    = $request->input('company_vat_registered');
+        $seller->company_phone  = $request->input('company_phone');
+        //$seller->accept_terms   = $request->input('accept_terms');
+        $seller->country_id     = $request->input('country_id');
+        $seller->city_id        = $request->input('city_id');
+        $seller->company_address       = $request->input('address_company');
+
+        $seller->save();
+
+        return redirect('/account/'.$request->input('user_id'))->with('success', 'Your query is ');
+    }
 }

@@ -5,5 +5,7 @@
     <li><a href="#">Edit Email</a></li>
     <li><a href="#">Messages</a></li>
     <li><a href="#">Logout</a></li>
-    <li><a href="/account/create_seller">Create seller</a></li>
+    @if(!isset(App\Admin\Seller::where('user_id', Auth::user()->id)->first()->id))
+        <li><a href="/account/{{ Auth::user()->id }}/create_seller">Create seller</a></li>
+    @endif
 </ul>

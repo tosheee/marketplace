@@ -39,7 +39,7 @@
 
                 <label>
                     <span title="VAT registered?">company VAT registered?</span>
-                    <input type="checkbox" name="company_vat_registered" class="label-values"/>
+                    <input type="text" name="company_vat_registered" class="label-values"/>
                 </label>
 
                 <label>
