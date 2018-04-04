@@ -29,7 +29,9 @@ Route::group(['prefix' => 'store'], function() {
     Route::get('',                    ['uses' => 'StoreController@index',        'as' => 'store.index']);
     Route::get('/search',             ['uses' => 'SearchController@search',      'as' => 'store.search']);
     Route::get('/{id}',               ['uses' => 'StoreController@show',         'as' => 'store.show']);
-    Route::post('/add-to-cart',       ['uses' => 'StoreController@getAddToCart']);
+
+    Route::post('/add-to-cart/', 'StoreController@getAddToCart');
+    //Route::post('/add-to-cart',       ['uses' => 'StoreController@getAddToCart']);
     Route::post('/send-user-message', ['uses' => 'StoreController@postUserMessage']);
     Route::post('/like_product/{id}', ['uses' => 'StoreController@getLikeProduct']);
     Route::post('/remove/{id}',       ['uses' => 'StoreController@getRemoveItem', 'as' => 'store.remove']);

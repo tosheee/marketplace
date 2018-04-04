@@ -84,8 +84,8 @@
                                     <br/>
 
                                     <div class="product_price">
-                                        <span class="price_new">{{ $descriptions['price'] }} {{ $descriptions['currency'] }}</span>
-                                        <span class="price_old">{{ isset($descriptions['old_price']) ? $descriptions['old_price'].' '.$descriptions['currency']  : '' }}</span>
+                                        <span class="price_new">{{ number_format($descriptions['price'], 2) }} {{ $descriptions['currency'] }}</span>
+                                        <span class="price_old">{{ isset($descriptions['old_price']) ? number_format($descriptions['old_price'], 2).' '.$descriptions['currency']  : '' }}</span>
                                         <br>
                                     </div>
 

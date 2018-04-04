@@ -136,7 +136,7 @@ console.log(buttons);
 
         $.ajax({
             method: "POST",
-            url: "/add-to-cart?product_id=" + idProduct + "&product_quantity=" + quantityProduct,
+            url: "/store/add-to-cart?product_id=" + idProduct + "&product_quantity=" + quantityProduct,
             data: { "_token": $('meta[name="_token"]').attr('content') },
             success: function( new_cart ) {
                 $('#nav-total-price').html(new_cart[0]);
