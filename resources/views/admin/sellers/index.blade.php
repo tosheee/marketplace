@@ -43,7 +43,6 @@
                     </td>
 
                     <td>{{ $seller->active_company }}</td>
-
                     <td>{{ $seller->brand_name }}</td>
                     <td>{{ $seller->brand_description }}</td>
                     <td>{{ $seller->brand_log }}</td>

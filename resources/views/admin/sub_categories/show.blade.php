@@ -2,7 +2,7 @@
 
 @section('content')
     @include('admin.admin_partials.admin_menu_old')
-        <a href="/admin/categories" class="btn btn-default">Обратно</a>
+        <a href="/admin/categories" class="btn btn-default">Back</a>
         <br>
         <br>
         <div class="well">
