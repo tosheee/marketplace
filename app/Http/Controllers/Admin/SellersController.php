@@ -6,16 +6,36 @@ use App\User;
 use App\Role;
 use App\Admin\Seller;
 use App\Admin\Country;
+use App\Admin\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class SellersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function index()
     {
-        $all_sellers = Seller::all();
+        $all_sellers = Seller::orderBy('created_at', 'desc')->get();
 
-        return view('admin.sellers.index')->with('all_sellers', $all_sellers)->with('title', 'All Sellers');
+        $user_id = array();
+        $usersSellers = array();
+
+        foreach ($all_sellers as $seller) {
+            array_push($user_id, $seller->user_id);
+        }
+
+        $uniqueUsers = array_unique($user_id);
+
+        foreach ($uniqueUsers as $user){
+            array_push($usersSellers, User::find($user));
+        }
+
+        return view('admin.sellers.index')->with('usersSellers', $usersSellers)->with('title', 'All Sellers');
     }
 
     public function create()
@@ -52,7 +72,7 @@ class SellersController extends Controller
         $seller->brand_logo     = '';
         $seller->brand_banner   = '';
         $seller->company_name   = $request->input('company_name');
-        $seller->company_vat    = $request->input('company_vat_registered');
+        $seller->company_vat    = 'fasdfasdfa';//$request->input('company_vat_registered');
         $seller->company_phone  = $request->input('company_phone');
         //$seller->accept_terms   = $request->input('accept_terms');
         $seller->country_id     = $request->input('country_id');
@@ -67,8 +87,10 @@ class SellersController extends Controller
     public function show($id)
     {
         $seller = Seller::find($id);
+        $user   = User::find($seller->user_id);
+        $products = Product::where('seller_id', $seller->user_id)->get();
 
-        return view('admin.sellers.show')->with('seller', $seller)->with('title', 'Преглед на подкатегория');
+        return view('admin.sellers.show')->with('seller', $seller)->with('user', $user)->with('products', $products)->with('title', 'View seller');
     }
 
     public function edit($id)
@@ -96,7 +118,8 @@ class SellersController extends Controller
 
        ]);*/
 
-        $seller = new Seller;
+
+        $seller = Seller::find($id);
         $seller->user_id           = $request->input('user_id');
         $seller->active_company    = $request->input('active_company');;
         $seller->brand_name        = $request->input('brand_name');
@@ -112,12 +135,15 @@ class SellersController extends Controller
         $seller->company_address   = $request->input('address_company');
         $seller->save();
 
-        return redirect('/account')->with('success', 'The country is updated');
+        return redirect('/admin/sellers')->with('success', 'The country is updated');
     }
 
     public function destroy($id)
     {
+        $seller = Seller::find($id);
+        $seller->delete();
 
+        return redirect('/admin/sellers')->with('message', 'The seller was delete');
     }
 
     public function postChangeRoles(Request $request, $id)

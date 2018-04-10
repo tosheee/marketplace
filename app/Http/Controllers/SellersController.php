@@ -7,6 +7,7 @@ use App\Admin\Category;
 use App\Admin\SubCategory;
 use App\Admin\Product;
 use App\Admin\Country;
+use App\Admin\Seller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -78,15 +79,20 @@ class SellersController extends Controller
     public function storeProduct(Request $request)
     {
         $this->validate($request, [
-            'seller_id'     => 'required',
+            'user_id'     => 'required',
             'category_id'     => 'required',
             'sub_category_id' => 'required',
             'identifier'      => 'required',
         ]);
 
+        //$user_id = intval($request->input('user_id'));
+
+        $seller_id = Seller::where('user_id', $request->input('user_id'))->first()->id;
+
         if(!isset(DB::table('products')->latest('id')->first()->id))
         {
             $product = new Product;
+            $product->user_id = 1;
             $product->seller_id = 1;
             $product->category_id     = 1;
             $product->sub_category_id = 1;
@@ -167,7 +173,8 @@ class SellersController extends Controller
 
         // Create Category
         $product = new Product;
-        $product->seller_id       = $request->input('seller_id');
+        $product->user_id         = $request->input('user_id');
+        $product->seller_id       = $seller_id;
         $product->category_id     = $request->input('category_id');
         $product->sub_category_id = $request->input('sub_category_id');
         $product->identifier      = $request->input('identifier');
@@ -180,7 +187,7 @@ class SellersController extends Controller
 
         session()->flash('notif', 'Продукта е създаден');
 
-        return redirect('/sellers/'.$request->input('user_id'));
+        return redirect('/sellers/'.$request->input('user_id').'/create_product');
     }
 
     public function insertedProducts($id){

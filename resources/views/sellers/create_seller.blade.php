@@ -7,7 +7,7 @@
 
     <div class="col-md-10">
         <div class="basic-grey">
-            <form action="{{ route('accounts.store_seller') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('sellers.store') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <input type="hidden" name="user_id" value="{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}" class="label-values"/>

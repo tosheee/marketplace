@@ -13,7 +13,8 @@
         <form action="{{ route('sellers.store_product') }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
 
-            <input type="hidden" name="seller_id" value="{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}" class="label-values"/>
+            <input type="hidden" name="user_id" value="{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}" class="label-values"/>
+
 
             <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                 <label>

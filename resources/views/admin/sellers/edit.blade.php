@@ -35,7 +35,7 @@
                 </label>
 
                 <label>
-                    <span style="margin: 0;">Активен продукт в магазина: </span>
+                    <span style="margin: 0;">Active company: </span>
                     <input type="radio" name="active_company" value="1" {{ $seller->active_company == 1 ? 'checked' : '' }}> Yes
                     <input type="radio" name="active_company" value="0" {{ $seller->active_company == 1 ? '' : 'checked' }}> No
                 </label>
@@ -106,7 +106,8 @@
 
 
                 <div class="actions">
-                    <input type="submit" name="commit" value="Създай" class="btn btn-success">
+                    <input name="_method" type="hidden" value="PUT">
+                    <input type="submit" name="commit" value="Update" class="btn btn-success">
                 </div>
             </form>
         </div>
