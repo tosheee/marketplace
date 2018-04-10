@@ -14,13 +14,13 @@
             {{ csrf_field() }}
 
             <input type="hidden" name="user_id" value="{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}" class="label-values"/>
-
+            <input type="hidden" name="seller_id" value="{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}" class="label-values"/>
 
             <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                 <label>
-                    <span>Категории:</span>
+                    <span>Category </span>
                     <select class="form-control" name="category_id" id="select-category">
-                        <option value="">Избери категория</option>
+                        <option value="">Choose category</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
@@ -30,9 +30,9 @@
 
             <div class="form-group{{ $errors->has('sub_category_id') ? ' has-error' : '' }}">
                 <label>
-                    <span>Подкатегория:</span>
+                    <span>Subcategory </span>
                     <select class="form-control" name="sub_category_id" id="select-sub-category">
-                        <option value="">Избери подкатегория</option>
+                        <option value="">Choose subcategory</option>
                         @foreach($subCategories as $sub_category)
                             <option value="{{ $sub_category->id }}">{{ $sub_category->name }}</option>
                         @endforeach
@@ -40,61 +40,49 @@
                 </label>
             </div>
 
-            <div class="form-group{{ $errors->has('identifier') ? ' has-error' : '' }}">
-                <label>
-                    <span>Идентификатор:</span>
-                    <select class="form-control" name="identifier" id="select-identifier">
-                        <option value="">Избери идентификатор</option>
-                        @foreach($subCategories as $sub_category)
-                            <option value="{{ $sub_category->identifier }}">{{ $sub_category->identifier }}</option>
-                        @endforeach
-                    </select>
-                </label>
-            </div>
-
             <label>
-                <span style="margin: 0;">Активен продукт в магазина: </span>
-                <input type="radio" name="active" value="1" checked> ДА
-                <input type="radio" name="active" value="0"> НЕ
+                <span style="margin: 0;">Active product in the shop </span>
+                <input type="radio" name="active" value="1" checked> Yes
+                <input type="radio" name="active" value="0"> No
             </label>
             <br>
 
             <label>
-                <span>Каталожен номер:</span>
+                <span>Article ID </span>
                 <input type="text" name="description[article_id]" value="" id="admin_product_description" class="label-values"/>
             </label>
 
             <label>
-                <span>Име на продукта:</span>
+                <span>Name product </span>
                 <input type="text" name="description[title_product]" value="" id="admin_product_description" class="label-values" require />
             </label>
 
             <label>
-                <span style="margin: 0;">В разпродажба: </span>
-                <input type="radio" name="sale" value="0" checked> НЕ
-                <input type="radio" name="sale" value="1" > ДА
+                <span style="margin: 0;">Sale </span>
+                <input type="radio" name="sale" value="0" checked> No
+                <input type="radio" name="sale" value="1" > Yes
             </label>
             <br>
 
             <label>
-                <span style="margin: 0;">Препоръчан: </span>
-                <input type="radio" name="recommended" value="0" checked> НЕ
-                <input type="radio" name="recommended" value="1"> ДА
+                <span style="margin: 0;">Recommended </span>
+                <input type="radio" name="recommended" value="0" checked> No
+                <input type="radio" name="recommended" value="1"> Yes
             </label>
             <br>
 
             <label>
-                <span style="margin: 0;">Най - продаван: </span>
-                <input type="radio" name="best_sellers" value="0" checked> НЕ
-                <input type="radio" name="best_sellers" value="1"> ДА
+                <span style="margin: 0;">Best seller </span>
+                <input type="radio" name="best_sellers" value="0" checked> No
+                <input type="radio" name="best_sellers" value="1"> Yes
             </label>
             <br>
 
             <label>
-                <span style="margin: 0;">Наличност: </span>
-                <input type="radio" name="description[product_status]" value="Наличен" checked> Наличен:
-                <input type="radio" name="description[product_status]" value="По поръчка"> По поръчка:
-                <input type="radio" name="description[product_status]" value="Не е наличен"> Не е наличен:
+                <span style="margin: 0;">Availability </span>
+                <input type="radio" name="description[product_status]" value="In stock" checked> In stock
+                <input type="radio" name="description[product_status]" value="Pre order"> Pre order
+                <input type="radio" name="description[product_status]" value="Out of stock"> Out of stock
             </label>
             <br>
 
@@ -104,17 +92,17 @@
             </label>
 
             <label>
-                <span>Цена в магазина:</span>
+                <span>Price</span>
                 <input type="text" name="description[price]" value="" id="admin_product_description" class="label-values"/>
             </label>
 
             <label>
-                <span>Стара цена:</span>
+                <span>Old price</span>
                 <input type="text" name="description[old_price]" value="" id="admin_product_description" class="label-values"/>
             </label>
 
             <label>
-                <span style="margin: 0;">Валута:</span>
+                <span style="margin: 0;">Currency </span>
                 <input type="radio" name="description[currency]" value="лв." checked> BGN:
                 <input type="radio" name="description[currency]" value="euro"> EUR:
                 <input type="radio" name="description[currency]" value="usd">  USD:
@@ -122,11 +110,11 @@
             <br>
 
             <label>
-                <span>Късо описание на продукта:</span>
+                <span>Short description </span>
                 <textarea name="description[short_description]" value="" id="admin_product_description" class="label-values"/></textarea>
             </label>
 
-            <span>Описание на продукта:</span>
+            <span>Long description </span>
             <label>
                 <textarea name="description[general_description]" id="editor-create" ></textarea>
             </label>

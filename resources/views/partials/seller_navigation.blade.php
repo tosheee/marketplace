@@ -1,7 +1,6 @@
 <ul id="ver-account-menu">
     <span class=""><b>Seller</b></span>
     <li><a href="/sellers/{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}">Dashboard Seller</a></li>
-    <li><a href="/sellers/{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}/create_seller">Create other seller</a></li>
 
     <li><a href="/sellers/{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}/create_product">Create product</a></li>
     <li><a href="/sellers/{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}/products/{{ isset(Auth::user()->id) ? Auth::user()->id : '' }}">Inserted products</a></li>

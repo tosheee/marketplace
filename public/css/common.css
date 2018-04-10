@@ -9,6 +9,14 @@
 }
 */
 
+
+ul,li {  padding:0;  margin:0;  }
+
+li { list-style-type:none; }
+
+
+
+
 input[type=radio][name="menucolor"] {
     display: none;
 }
@@ -72,16 +80,7 @@ padding: 1%;
 
 
 /**/
-body{
-    font-family: verdana;
-    font-size: 12px;
-    margin: 10px;
-}
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
+
 .table{
     width: 100%;
 }

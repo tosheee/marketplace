@@ -60,7 +60,6 @@ class ProductsController extends Controller
             'seller_id'     => 'required',
             'category_id'     => 'required',
             'sub_category_id' => 'required',
-            'identifier'      => 'required',
         ]);
 
         if(!isset(DB::table('products')->latest('id')->first()->id))

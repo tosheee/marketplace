@@ -28,8 +28,8 @@
 
 
                     @if (Auth::guest())
-                        <li><a href="{{ route('login') }}">Вход</a></li>
-                        <li><a href="{{ route('register') }}">Регистрация</a></li>
+                        <li><a href="{{ route('login') }}">Sing in</a></li>
+                        <li><a href="{{ route('register') }}">Sing up</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -65,50 +65,50 @@
                 <ul id="side" class="side-nav">
 
                     <li class="panel">
-                        <a id="panel1" href="javascript:;" data-toggle="collapse" data-target="#Dashboard"> <i class="fa fa-truck"></i> Поръчки
+                        <a id="panel1" href="javascript:;" data-toggle="collapse" data-target="#Dashboard"> <i class="fa fa-truck"></i> Orders
                             <span class="label label-danger">{{ isset($notCompletedOrders) ? $notCompletedOrders : '' }}</span>
                             <?php  $completedOrders = count(App\Order::all()->where('completed_order', true)) ?>
                             <span class="label label-primary">{{ isset($completedOrders) ? $completedOrders : '' }}</span>
                             <i class="fa fa-chevron-left pull-right" id="arow1"></i> </a>
                         <ul class="collapse nav" id="Dashboard">
-                            <li> <a href="/admin/not_completed_orders"><i class="fa fa-angle-double-right"></i> Не изпълнени поръчки</a> </li>
-                            <li> <a href="/admin/dashboard"><i class="fa fa-angle-double-right"></i> Всички Поръчки</a> </li>
+                            <li> <a href="/admin/not_completed_orders"><i class="fa fa-angle-double-right"></i> Outstanding orders</a> </li>
+                            <li> <a href="/admin/dashboard"><i class="fa fa-angle-double-right"></i> All orders</a> </li>
                         </ul>
                     </li>
                     
                       <li class="panel">
-                        <a id="panel2" href="javascript:;" data-toggle="collapse" data-target="#inbox"> <i class="fa fa-inbox"></i> Съобщения
+                        <a id="panel2" href="javascript:;" data-toggle="collapse" data-target="#inbox"> <i class="fa fa-inbox"></i> Messages
 
                              <?php $allUserMessage = count(App\Admin\UserMessage::all()); ?>
 
                              <?php  $newUserMessage = count(App\Admin\UserMessage::all()->where('answer', false)) ?>
                             @if ($newUserMessage == 0)
-                                <span class="label label-warning">Няма нови съобщения</span>
+                                <span class="label label-warning"> No new messages</span>
                             @else
-                                <span class="label label-danger">Има {{ $newUserMessage }} съобщение/я</span>
+                                <span class="label label-danger">New {{ $newUserMessage }} message/s</span>
                             @endif
                             <i class="fa fa fa-chevron-left pull-right" id="arow2"></i> </a>
                         <ul class="collapse nav" id="inbox">
-                            <li> <a href="/admin/user_messages"><i class="fa fa-angle-double-right"></i> Всички съобщения 
+                            <li> <a href="/admin/user_messages"><i class="fa fa-angle-double-right"></i> All messages
                             <span class="label label-primary">{{ isset($completedOrders) ? $completedOrders : '' }}</span></a> </li>
                         </ul>
                     </li>
 
                     <li class="panel">
-                        <a id="panel3" href="javascript:;" data-toggle="collapse" data-target="#edit"> <i class="fa fa-product-hunt"></i> Продукти
+                        <a id="panel3" href="javascript:;" data-toggle="collapse" data-target="#edit"> <i class="fa fa-product-hunt"></i> Products
                             <?php  $productCount = count(App\Admin\Product::all()) ?>
                             <span class="label label-success">{{ isset($productCount) ? $productCount : '0'}}</span>
                             <i class="fa fa fa-chevron-left pull-right" id="arow3"></i>
                         </a>
                         <ul class="collapse nav" id="edit">
-                            <li> <a href="/admin/products"><i class="fa fa-angle-double-right"></i> Всички продукти</a> </li>
-                            <li> <a href="/admin/products/create"><i class="fa fa-angle-double-right"></i> Нов продукт</a> </li>
+                            <li> <a href="/admin/products"><i class="fa fa-angle-double-right"></i> All products</a> </li>
+                            <li> <a href="/admin/products/create"><i class="fa fa-angle-double-right"></i> New products</a> </li>
                         </ul>
                     </li>
 
 
                     <li class="panel">
-                            <a id="panel4" href="javascript:;" data-toggle="collapse" data-target="#charts"> <i class="fa fa-product-hunt"></i> Филтрирани продукти
+                            <a id="panel4" href="javascript:;" data-toggle="collapse" data-target="#charts"> <i class="fa fa-product-hunt"></i> Products of category
                                 <i class="fa fa-chevron-left pull-right" id="arow4"></i> </a>
                             <ul class="collapse nav" id="charts">
                                 @foreach($subCategoriesButtonsName as $subCategoriesButtonsName)
@@ -124,66 +124,66 @@
                     </li>
 
                     <li class="panel">
-                        <a id="panel5" href="javascript:;" data-toggle="collapse" data-target="#clipboard"> <i class="fa fa-users"></i> Потребители
+                        <a id="panel5" href="javascript:;" data-toggle="collapse" data-target="#clipboard"> <i class="fa fa-users"></i> All Users
                             <i class="fa fa fa-chevron-left pull-right" id="arow5"></i> </a>
                         <ul class="collapse nav" id="clipboard">
-                            <li> <a href="/admin/users"><i class="fa fa-angle-double-right"></i> Потребители</a> </li>
-                            <li> <a href="/admin/admins"><i class="fa fa-angle-double-right"></i> Администратори</a> </li>
+                            <li> <a href="/admin/users"><i class="fa fa-angle-double-right"></i> Users</a> </li>
+                            <li> <a href="/admin/admins"><i class="fa fa-angle-double-right"></i> Admins</a> </li>
                         </ul>
                     </li>
 
                   
 
                     <li class="panel">
-                        <a id="panel6" href="javascript:;" data-toggle="collapse" data-target="#cogs"> <i class="fa fa-cogs"></i> Страници
+                        <a id="panel6" href="javascript:;" data-toggle="collapse" data-target="#cogs"> <i class="fa fa-cogs"></i> Pages
                             <i class="fa fa fa-chevron-left pull-right" id="arow6"></i> </a>
                         <ul class="collapse nav" id="cogs">
-                            <li> <a href="/admin/pages"><i class="fa fa-angle-double-right"></i> Всички страници</a> </li>
-                            <li> <a href="/admin/pages/create"><i class="fa fa-angle-double-right"></i> Нова страница</a> </li>
+                            <li> <a href="/admin/pages"><i class="fa fa-angle-double-right"></i> All pages</a> </li>
+                            <li> <a href="/admin/pages/create"><i class="fa fa-angle-double-right"></i> New page</a> </li>
                         </ul>
                     </li>
 
                     <li class="panel">
-                        <a id="panel7" href="javascript:;" data-toggle="collapse" data-target="#paper"> <i class="fa fa-cogs"></i> Категории
+                        <a id="panel7" href="javascript:;" data-toggle="collapse" data-target="#paper"> <i class="fa fa-cogs"></i> Category
                             <?php  $categoryCount = count(App\Admin\Category::all()) ?>
                             <span class="label label-success">{{ isset($categoryCount) ? $categoryCount : '0' }}</span>
                             <i class="fa fa fa-chevron-left pull-right" id="arow7"></i> </a>
                         <ul class="collapse nav" id="paper">
-                            <li> <a href="/admin/categories/"><i class="fa fa-angle-double-right"></i> Всички Категории</a> </li>
-                            <li> <a href="/admin/categories/create"><i class="fa fa-angle-double-right"></i> Нова категория</a> </li>
+                            <li> <a href="/admin/categories/"><i class="fa fa-angle-double-right"></i> All category</a> </li>
+                            <li> <a href="/admin/categories/create"><i class="fa fa-angle-double-right"></i> New category</a> </li>
                         </ul>
                     </li>
 
                     <li class="panel">
-                        <a id="panel8" href="javascript:;" data-toggle="collapse" data-target="#trash"> <i class="fa fa-cogs"></i> Подкатегории
+                        <a id="panel8" href="javascript:;" data-toggle="collapse" data-target="#trash"> <i class="fa fa-cogs"></i> Sub category
                         
                             <?php  $subCategoryCount = count(App\Admin\SubCategory::all()) ?>
                             <span class="label label-success">{{ isset($subCategoryCount) ? $subCategoryCount : '0' }}</span>
                             <i class="fa fa fa-chevron-left pull-right" id="arow8"></i>
                         </a>
                         <ul class="collapse nav" id="trash">
-                            <li> <a href="/admin/sub_categories/"><i class="fa fa-angle-double-right"></i> Всички Подкатегории</a> </li>
-                            <li> <a href="/admin/sub_categories/create"><i class="fa fa-angle-double-right"></i> Нова подкатегория</a> </li>
+                            <li> <a href="/admin/sub_categories/"><i class="fa fa-angle-double-right"></i> All category</a> </li>
+                            <li> <a href="/admin/sub_categories/create"><i class="fa fa-angle-double-right"></i> New category</a> </li>
                         </ul>
                     </li>
 
                     <li class="panel">
                         <a id="panel9" href="javascript:;" data-toggle="collapse" data-target="#btc">
-                            <i class="fa fa-globe"></i> Информация за сайта
+                            <i class="fa fa-globe"></i> General information
                             <i class="fa fa fa-chevron-left pull-right" id="arow9"></i>
                         </a>
                         <ul class="collapse nav" id="btc">
-                            <li> <a href="/admin/info_company/"><i class="fa fa-angle-double-right"></i> Информация за сайта</a> </li>
+                            <li> <a href="/admin/info_company/"><i class="fa fa-angle-double-right"></i> Information</a> </li>
                         </ul>
                     </li>
 
                     <li class="panel">
                         <a id="panel10" href="javascript:;" data-toggle="collapse" data-target="#slider">
-                            <i class="fa fa-bar-chart"></i> Слидер
+                            <i class="fa fa-bar-chart"></i> Slider
                             <i class="fa fa fa-chevron-left pull-right" id="arow10"></i> </a>
                         <ul class="collapse nav" id="slider">
-                            <li> <a href="/admin/slider/"><i class="fa fa-angle-double-right"></i>Всички снимки в слайдер </a> </li>
-                            <li> <a href="/admin/slider/create"><i class="fa fa-angle-double-right"></i> Добавяне на снимка</a> </li>
+                            <li> <a href="/admin/slider/"><i class="fa fa-angle-double-right"></i>All photos</a> </li>
+                            <li> <a href="/admin/slider/create"><i class="fa fa-angle-double-right"></i> Add photos</a> </li>
                         </ul>
                      </li>
 

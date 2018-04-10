@@ -80,29 +80,26 @@
                     </ul>
                 </li>
 
-                <li class="dropdown" id="menu-scroll-cart">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> <i class="fa fa-cart-plus mr-5"></i> <span class="hidden-xs">
-                                Backet <strong><sup class="text-primary">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</sup></strong>
-                                <i class="fa fa-angle-down ml-5"></i>
-                            </span> </a>
+                <!-- backet -->
 
-                    <?php
-                    if(Session::has('cart'))
-                    {
-                        $oldCart = Session::get('cart');
-                        $cart = new App\Cart($oldCart);
-                        $productsCart = $cart->items;
-                    }
-                    ?>
+                <li class="dropdown" id="menu-scroll-cart">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false">
+                        <i class="fa fa-cart-plus mr-5"></i>
+                        <span class="hidden-xs">Backet
+                            <strong><sup class="text-primary">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</sup></strong>
+                                <i class="fa fa-angle-down ml-5"></i>
+                        </span>
+                    </a>
+
 
                     <ul class="dropdown-menu cart w-250" role="menu">
-                        <li>
-                            <div class="cart-items">
-                                <ol class="items">
-                                    @if(isset($productsCart))
+
+                            <li>
+                                <div class="cart-items" style="height: 20%">
+                                    <ol class="items">
+                                        @if(isset($productsCart))
                                         @foreach($productsCart as $product)
                                             <?php $descriptions = json_decode($product['item']->description, true); ?>
-
                                             <li>
                                                 @if(isset($descriptions['main_picture_url']))
                                                     <a href="#" class="product-image"> <img src="{{ $descriptions['main_picture_url'] }}" class="img-responsive" alt=""> </a>
@@ -125,24 +122,26 @@
                                                 <!-- end product-details -->
                                             </li>
                                         @endforeach
-                                        <p class="text-center"><h5>Total: <strong> {{ $cart->totalPrice }} {{ $descriptions['currency'] }}</strong></h5></p>
+                                        <p class="text-center">
+                                            <h5>Total: <strong> {{ $cart->totalPrice }} {{ $descriptions['currency'] }}</strong></h5>
+                                        </p>
+                                    </ol>
+                                </div>
+                            </li>
 
-                                </ol>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="cart-footer">
-                                <a href="{{ route('store.shoppingCart') }}" class="pull-left"><i class="fa fa-cart-plus mr-5"></i> Basket</a>
-                                <a href="{{ route('store.checkout') }}" class="pull-right"><i class="fa fa-money" aria-hidden="true"></i> Payment</a>
-                            </div>
-                        </li>
+                            <li>
+                                <div class="cart-footer">
+                                    <a href="{{ route('store.shoppingCart') }}" class="pull-left"><i class="fa fa-cart-plus mr-5"></i> Basket</a>
+                                    <a href="{{ route('store.checkout') }}" class="pull-right"><i class="fa fa-money" aria-hidden="true"></i> Payment</a>
+                                </div>
+                            </li>
+                        @else
+                            <li style="text-align: center;">
+                                Your Backet is empty!
+                            </li>
+                        @endif
                     </ul>
                 </li>
-                @else
-                    <li style="text-align: center;">
-                        Your Basket is empty!
-                    </li>
-                @endif
             </ul>
         </div><!-- /.navbar-collapse -->
     </div>

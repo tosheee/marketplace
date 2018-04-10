@@ -21,7 +21,7 @@
 
         $.ajax({
             method: "post",
-            url: "/remove/" + idProduct,
+            url: "/store/remove/" + idProduct,
             data: { "_token": $('meta[name="_token"]').attr('content') },
             success: function( new_cart ) {
 

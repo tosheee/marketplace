@@ -82,7 +82,6 @@ class SellersController extends Controller
             'user_id'     => 'required',
             'category_id'     => 'required',
             'sub_category_id' => 'required',
-            'identifier'      => 'required',
         ]);
 
         //$user_id = intval($request->input('user_id'));
@@ -177,7 +176,7 @@ class SellersController extends Controller
         $product->seller_id       = $seller_id;
         $product->category_id     = $request->input('category_id');
         $product->sub_category_id = $request->input('sub_category_id');
-        $product->identifier      = $request->input('identifier');
+        $product->identifier      = preg_replace('/\s+/', '_', strtolower($request->input('sub_category_id')));
         $product->active          = $request->input('active');
         $product->sale            = $request->input('sale');
         $product->recommended     = $request->input('recommended');
