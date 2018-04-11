@@ -125,7 +125,6 @@ select.input-lg {
 
 /*CART/////////////////////*/
 
-
 .cart-items::-webkit-scrollbar {
     width: 6px;
     background-color: #ECECEC;
@@ -133,23 +132,26 @@ select.input-lg {
 .cart-items::-webkit-scrollbar-track {
 
 }
+
 .cart-items::-webkit-scrollbar-thumb {
     background-color: #084951;
     outline: 1px solid black;
 }
 
-.topBar ul.topBarNav li ul.cart .cart-items{
+li ul.cart .cart-items{
     padding: 10px;
+    width: 250px;
     height: 200px;
     overflow: auto;
 }
 
-.topBar ul.topBarNav li ul.cart .cart-items .items {
+li ul.cart .cart-items .items {
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
-.topBar ul.topBarNav li ul.cart .cart-items .items li {
+
+li ul.cart .cart-items .items li {
     overflow: hidden;
     clear: left;
     padding-bottom: 10px;
@@ -157,44 +159,45 @@ select.input-lg {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.topBar ul.topBarNav li ul.cart .cart-items .items li .product-image {
+li ul.cart .cart-items .items li .product-image {
     width: 60px;
     float: left;
 }
-.topBar ul.topBarNav li ul.cart .cart-items .items li a {
+
+li ul.cart .cart-items .items li a {
     margin: 0;
     padding: 0;
     line-height: normal;
     background-color: transparent;
     display: inline;
 }
-.topBar ul.topBarNav li ul.cart .cart-items .items li .product-details {
+
+li ul.cart .cart-items .items li .product-details {
     position: relative;
     margin-left: 60px;
     padding: 0 15px 0 10px;
 }
-.topBar ul.topBarNav li ul.cart .cart-items .items li .product-details .close-icon {
+
+li ul.cart .cart-items .items li .product-details .close-icon {
     position: absolute;
     top: 0;
     right: 0;
     font-size: 10px;
     line-height: normal;
 }
-.topBar ul.topBarNav li ul.cart .cart-footer {
+
+li ul.cart .cart-footer {
+    width: 250px;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.02);
 }
-.topBar ul.topBarNav li ul.cart .cart-footer a {
+
+li ul.cart .cart-footer a {
     text-align: center;
     padding: 10px 20px;
     margin: 0;
     background-color: transparent;
 }
-
-/*/////////////small menu////////////////////////*/
-
-
-
 
 #menu-scroll .cart-items::-webkit-scrollbar {
     width: 6px;

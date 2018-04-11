@@ -1,10 +1,11 @@
 @include('partials.contact_form')
 @include('partials.middle_top_bar')
 
-<nav class="navbar navbar-main navbar-default" role="navigation" style="opacity: 1;">
+<nav id="horizontal-menu-bottom" class="navbar navbar-main navbar-default" role="navigation" style="opacity: 1;">
     <div class="container">
         <!-- Brand and toggle -->
         <div class="navbar-header">
+
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -94,7 +95,7 @@
                 }
                 ?>
 
-                <li class="dropdown">
+                <li class="dropdown" id="menu-scroll-cart">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false">
                         <i class="fa fa-cart-plus mr-5"></i>
                         <span class="hidden-xs">Backet

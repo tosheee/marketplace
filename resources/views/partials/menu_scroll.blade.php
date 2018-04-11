@@ -2,16 +2,13 @@
     <div class="container">
         <!-- Brand and toggle -->
         <div class="navbar-header">
-
             <span ><a href="/"><img style="margin: 10px 2px 0 0" width="100" src="/marketplace_logo.png" alt=""></a></span>
-
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-
         </div>
 
         <!-- Collect the nav links,  -->
@@ -42,6 +39,10 @@
                         });
                     });
                 </script>
+
+                <li>
+                    <a href="/special_offers    " class="dropdown-toggle"  data-hover="dropdown" data-close-others="false">Special Offers</a>
+                </li>
 
                 @foreach($pagesButtonsRender as $pageButton)
                     <li><a href="/page?show={{ $pageButton->url_page }}" class="dropdown-toggle"  data-hover="dropdown" data-close-others="false">{{ $pageButton->name_page }}</a></li>
