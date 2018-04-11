@@ -84,7 +84,7 @@
                     </ul>
                 </li>
 
-                <!-- backet -->
+                <!-- basket -->
 
                 <?php
                 if(Session::has('cart'))
@@ -98,7 +98,7 @@
                 <li class="dropdown" id="menu-scroll-cart">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false">
                         <i class="fa fa-cart-plus mr-5"></i>
-                        <span class="hidden-xs">Backet
+                        <span class="hidden-xs">Basket
                             <strong><sup class="text-primary">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</sup></strong>
                                 <i class="fa fa-angle-down ml-5"></i>
                         </span>
@@ -150,7 +150,7 @@
                             </li>
                         @else
                             <li style="text-align: center;">
-                                Your Backet is empty!
+                                Your Basket is empty!
                             </li>
                         @endif
                     </ul>

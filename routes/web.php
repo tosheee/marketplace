@@ -25,6 +25,10 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'login'], function() {
 Route::get('/', 'StoreController@index');
 
 Route::group(['prefix' => 'store'], function() {
+    Route::get('/shopping-cart',      ['uses' => 'StoreController@getCart',       'as' => 'store.shoppingCart']);
+    Route::get('/checkout',           ['uses' => 'StoreController@getCheckout',   'as' => 'store.checkout']);
+    Route::post('/checkout',          ['uses' => 'StoreController@postCheckout']);
+
     Route::get('/page',               ['uses' => 'StoreController@getShowPages', 'as' => 'store.showPage']);
     Route::get('',                    ['uses' => 'StoreController@index',        'as' => 'store.index']);
     Route::get('/search',             ['uses' => 'SearchController@search',      'as' => 'store.search']);
@@ -35,9 +39,6 @@ Route::group(['prefix' => 'store'], function() {
     Route::post('/send-user-message', ['uses' => 'StoreController@postUserMessage']);
     Route::post('/like_product/{id}', ['uses' => 'StoreController@getLikeProduct']);
     Route::post('/remove/{id}',       ['uses' => 'StoreController@getRemoveItem', 'as' => 'store.remove']);
-    Route::get('/checkout',           ['uses' => 'StoreController@getCheckout',   'as' => 'store.checkout']);
-    Route::post('/checkout',          ['uses' => 'StoreController@postCheckout']);
-    Route::get('/shopping-cart',      ['uses' => 'StoreController@getCart',       'as' => 'store.shoppingCart']);
 });
 /////////////////////////////////
 

@@ -8,9 +8,9 @@
                 <meta property="fb:app_id" content="966242223397117" />
                 <meta property="og:url" content="{{ Request::fullUrl() }}" />
                 <meta property="og:type" content="product" />
-                <meta property="og:title" content="Floromaniq - {{isset($metaDescription) ? $metaDescription['title_product'] : '' }}" />
+                <meta property="og:title" content="Marketplace - {{isset($metaDescription) ? $metaDescription['title_product'] : '' }}" />
                 <meta property="og:description" content="{{isset($metaDescription) ? $metaDescription['title_product'] : '' }}" />
-                <meta property="og:image" content="{{ asset('storage/upload_pictures')}}/{{ $product->id }}/{{ $metaDescription['upload_main_picture'] }}" />
+                <meta property="og:image" content="{{ asset('storage/upload_pictures')}}/{{ $product->id }}/{{ isset($metaDescription['upload_main_picture']) ? $metaDescription['upload_main_picture'] : '' }}" />
                 <script src="//connect.facebook.net/bg_BG/sdk.js#xfbml=1&version=v2.11"></script>
             @endif
         @endif

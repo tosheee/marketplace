@@ -12,36 +12,36 @@
             <div class="row order_sorter">
     			  <ul id="toggle-orders">
     			      <li class="first"></li>
-    			      <li class="fo selected"> <a href="/store">Обратно в магазина</a></></li>
-    			      <li class="oh "><a href="#">Количка</a></li>
-    			      <li class="ed selected"><a href="/checkout">Продължи поръчката</a></></li>
+    			      <li class="fo selected"> <a href="/store">Departments</a></></li>
+    			      <li class="oh "><a href="#">Basket</a></li>
+    			      <li class="ed selected"><a href="/store/checkout">Checkout</a></></li>
     			   </ul>
     		</div>
         
             <div class="row" id="order-history">
                 <div class="row order-summary-shopping-cart">
                     <div class="totalspent-orders">
-                        <h3>Общо:</h3>
+                        <h3>Total:</h3>
                         <h2> {{ $totalPrice }} лв.</h2>
                     </div>
         
 	                <div class="printqty-orders">
-	                    <h3>Общ брой на продуктите:</h3>
+	                    <h3>Total products:</h3>
 	                    <h2>{{ $totalQuantity }} бр.</h2>
 	                </div>
 
                     <div class="ytd-orders">
 			            <p style="font-size: 90%;">
-			                Внимателно опаковано
+			                Text
 			                <br>
-			                Винаги свежи продукти
+                            Text
 			                <br>
-			                Без компромис за качество
+                            Text
 		                </p>
 			        </div>
 			   
 			        <div class="mtd-orders">
-                        <p style="font-size: 90%;">Куриерската услуга не е включена в цената и е за сметка на купувача</p>                                   
+                        <p style="font-size: 90%;">Text</p>
                     </div>
 			</div>
                      
@@ -73,10 +73,10 @@
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     </span>
                                 <p>
-                                    <p>Цена:  <b>{{ number_format($descriptions['price'], 2) }} {{ $descriptions['currency'] }}</b></p>
-                                    <p>Обща цена: <b id="common-product-price-sc">{{ number_format($product['qty'] * $descriptions['price'], 2) }} {{ $descriptions['currency'] }}</b></p>
-                                    <p>Брой продукти: <b id="common-product-qty-sc">{{ $product['qty'] }}</b><p>
-                                    <p>Статус: <b>{{ $descriptions['product_status'] }}</b></p>
+                                    <p>Price:  <b>{{ number_format($descriptions['price'], 2) }} {{ $descriptions['currency'] }}</b></p>
+                                    <p>Common price: <b id="common-product-price-sc">{{ number_format($product['qty'] * $descriptions['price'], 2) }} {{ $descriptions['currency'] }}</b></p>
+                                    <p>Quantity: <b id="common-product-qty-sc">{{ $product['qty'] }}</b><p>
+                                    <p>Status: <b>{{ $descriptions['product_status'] }}</b></p>
                                 </p>
                             </div>
                                     

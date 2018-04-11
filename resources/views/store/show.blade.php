@@ -10,7 +10,7 @@
     <ul>
         <li>
           <div class="order-breadcrumb">
-            <a href="/" class="">Начало</a>
+            <a href="/" class="">Departments</a>
             @foreach($categories as $category)
                 @if($product->category_id == $category->id)
                     › <a href="/store/search?category={{ $category->id }}" class=""> {{ $category->name }}</a>
@@ -39,15 +39,15 @@
                                 <div class="row" >
                                     @if ($product->sale == 1)
 	                                <div class="product_sale">
-	                                    <p>Разпродажба</p>
+	                                    <p>Sale</p>
 	                                </div>
     	                            @elseif($product->recommended == 1)
     	                                <div class="product_recommended">
-    	                                    <p>Препоръчан</p>
+    	                                    <p>Recommended</p>
     	                                </div>
     	                            @elseif($product->best_sellers == 1)
     	                                <div class="product_best_sale">
-    	                                    <p>Най-продаван</p>
+    	                                    <p>Best seller</p>
     	                                </div>
     	                            @endif
 	                            
@@ -71,15 +71,15 @@
                                                 <div class="row" >
                                                     @if ($product->sale == 1)
             			                                <div class="product_sale">
-            			                                    <p>Разпродажба</p>
+            			                                    <p>Sale</p>
             			                                </div>
             			                            @elseif($product->recommended == 1)
             			                                <div class="product_recommended">
-            			                                    <p>Препоръчан</p>
+            			                                    <p>Recommended</p>
             			                                </div>
             			                            @elseif($product->best_sellers == 1)
             			                                <div class="product_best_sale">
-            			                                    <p>Най-продаван</p>
+            			                                    <p>Bes seller</p>
             			                                </div>
             			                            @endif
                                      
@@ -97,15 +97,15 @@
                                                 <div class="row">
                                                     @if ($product->sale == 1)
             			                                <div class="product_sale">
-            			                                    <p>Разпродажба</p>
+            			                                    <p>Sale</p>
             			                                </div>
             			                            @elseif($product->recommended == 1)
             			                                <div class="product_recommended">
-            			                                    <p>Препоръчан</p>
+            			                                    <p>Recommended</p>
             			                                </div>
             			                            @elseif($product->best_sellers == 1)
             			                                <div class="product_best_sale">
-            			                                    <p>Най-продаван</p>
+            			                                    <p>Best seller</p>
             			                                </div>
             			                            @endif
             			                            
@@ -178,7 +178,7 @@
                 <p style="color:rgba(8, 9, 21, 0.96)"> {{ isset($descriptions['short_description']) ? $descriptions['short_description'] : '' }} </p>
                 <!-- Precios -->
                 <h6 class="title-price"><small></small></h6>
-                <h3 style="margin-top: 0px;">Цена: {{ $descriptions['price'] }} {{ $descriptions['currency'] }}
+                <h3 style="margin-top: 0px;">Price: {{ $descriptions['price'] }} {{ $descriptions['currency'] }}
                     @if (isset($descriptions['old_price']))
                         <span class="old-price">   {{ $descriptions['old_price'] }} {{ $descriptions['currency'] }}</span>
                     @endif
@@ -192,13 +192,13 @@
                                 <div class="grid-5">
                                     <span  class="kor-open-as-dialog ish-tooltip" data-overlay-class="ish-dialogPage">
                                     <i class="fa fa-check"></i> 
-                                    <label>Внимателно опаковано</label>
+                                    <label>Text</label>
                                     </span>
                                 </div>
                                 <div class="grid-6">
                                     <span class="kor-open-as-dialog ish-tooltip" data-overlay-class="ish-dialogPage">
                                         <i class="fa fa-check"></i>
-                                        <label>Свежи продукти</label>
+                                        <label>Text</label>
                                     </span>
                                 </div>
                             </div>
@@ -230,17 +230,17 @@
 
                     <div class="section" >
                         @if(isset($descriptions['article_id']))
-                            <p>Продуктов код: {{ $descriptions['article_id'] }}</p>
+                            <p>Article ID: {{ $descriptions['article_id'] }}</p>
                         @endif
                     </div>
 
                     <div class="section" >
-                        <p>Статус: {{ isset($descriptions['product_status'])  ? $descriptions['product_status'] : '' }}</p>
+                        <p>Status: {{ isset($descriptions['product_status'])  ? $descriptions['product_status'] : '' }}</p>
                     </div>
                     
                     <div class="section">
                         <div class="fb-share-button" data-href="{{ Request::fullUrl() }}" data-layout="button_count" data-size="small" data-mobile-iframe="true">
-                            <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ Request::fullUrl() }}&amp;src=sdkpreparse">Споделяне</a>
+                            <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ Request::fullUrl() }}&amp;src=sdkpreparse">Share</a>
                         </div>
                           
                         <div id="fb-root"></div>
@@ -259,14 +259,14 @@
                         @if ($descriptions['product_status'] == 'Не е наличен')
                             <a  style="background-color: #FF9900; border-color: #FF9900;" class="btn btn-success" href="#">{{ $descriptions['product_status'] }}</a>
                         @else
-                            <a class="add-product-button btn btn-success" >Добави в количката</a>
+                            <a class="add-product-button btn btn-success" >Add to basket</a>
                         @endif
                     </div>
                 </div>
             </div>
         <div class="col-xs-9">
                 <ul class="menu-items">
-                    <li class="active">Информация за продукта</li>
+                    <li class="active">Product description</li>
                     <li></li>
                     <li></li>
                 </ul>
@@ -282,7 +282,7 @@
 	                    	<table class="table table-hover">
             				    <thead>
                 					<tr>
-                					   <th class="text-left">Детайли</th>
+                					   <th class="text-left">Details</th>
                 					   <th class="text-left"></th>
                 					</tr>
             				    </thead>
