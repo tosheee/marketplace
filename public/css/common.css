@@ -141,3 +141,39 @@ padding: 1%;
 .tableCell:nth-child(8){
     width: 15%;
 }
+
+
+header *, #container *, footer *, #top-modules *, #bottom-modules * {
+    box-sizing: border-box;
+}
+
+.ms-catalog-seller-profile .product-thumb {
+    background-color: white;
+    padding: 15px;
+}
+
+.product-thumb {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+
+/**/
+.mm_box {
+    border-radius: 5px;
+    border: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+}
+
+.info-box {
+    margin-bottom: 20px;
+}
+
+.ms-catalog-seller-profile .avatar-box, .mm_box.mm_description .avatar-box {
+    display: inline-block;
+    margin: 0;
+    float: left;
+    border: none;
+}

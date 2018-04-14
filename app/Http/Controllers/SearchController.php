@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-
     public function search(Request $request)
     {
         $categories = Category::all();
@@ -93,7 +92,6 @@ class SearchController extends Controller
         return $find_products;
     }
     
-    
     public function get_products_of_price($get_products, $lowerPrice, $upperPrice)
     {
         $find_products = array();
@@ -113,8 +111,4 @@ class SearchController extends Controller
         
         return $find_products;
     }
-    
-    
-    
-
 }

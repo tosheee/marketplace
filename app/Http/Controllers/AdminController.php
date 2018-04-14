@@ -49,6 +49,7 @@ class AdminController extends Controller
         }
 
         $order->save();
+
         return redirect()->back()->with('orders', $orders)->with('order', $order)->with('success', 'Поръчката е маркиране')->with('title', 'Преглед на поръчка');
     }
 
@@ -56,8 +57,8 @@ class AdminController extends Controller
     {
         $order = Order::find($id);
         $order->delete();
-
         $orders = Order::orderBy('created_at', 'desc')->paginate(5);
+
         return view('admin.dashboard')->with('success', 'Поръчката е изтрита')->with('title', 'Всички Поръчки')->with('orders', $orders);
     }
 }

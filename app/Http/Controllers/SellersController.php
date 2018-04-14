@@ -62,10 +62,18 @@ class SellersController extends Controller
         $seller->country_id     = $request->input('country_id');
         $seller->city_id        = $request->input('city_id');
         $seller->company_address       = $request->input('address_company');
-
         $seller->save();
 
         return redirect('/sellers/'.$request->input('user_id'))->with('success', 'The country is updated');
+    }
+
+
+    public function showSeller($seller_id)
+    {
+        $seller = Seller::find($seller_id);
+        $products_seller = Product::where('seller_id', $seller_id)->get();
+
+        return view('sellers.show_seller')->with('seller', $seller)->with('products_seller', $products_seller);
     }
 
     public function createProduct()

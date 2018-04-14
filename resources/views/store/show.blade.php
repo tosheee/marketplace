@@ -262,9 +262,33 @@
                             <a class="add-product-button btn btn-success" >Add to basket</a>
                         @endif
                     </div>
+
+                    <div>
+
+
+                     Seller information:  {{ $seller->brand_name }}
+                        <a href="/sellers/show_seller/{{ $seller->id }}">   View profile</a>
+
+
+
+
+                    </div>
                 </div>
+            <div class="col-sm-4" style="min-width: 168px; margin-bottom: 20px;"><div class="mm_box mm_decription"><div class="info-box">
+                        <a class="avatar-box thumbnail" href="https://www.chopni.com/sellers/giorgio-modelli/products/"><img src="https://www.chopni.com/image/tmp/imageedit_2_4776458583-100x100.png"></a><div><ul class="list-unstyled"><li><h1 class="sellersname">Giorgio Modelli</h1></li><li></li><li><a target="_blank" href=""></a></li><li></li></ul></div></div>
+                    <a href="https://www.chopni.com/sellers/giorgio-modelli/products/" class="btn button btn-default btn-block" id="button_view_products" style="clear: both">
+                        <span>View products</span>
+                    </a></div><div class="mm_box mm_info"><ul class="mm_stats"><li><b>Member since:</b> 29/03/2018</li><li><b>Products: </b>20</li><li>
+                            <b class="profile-rating">Rating: </b><div class="ms-ratings main"><div class="ms-empty-stars"></div><div class="ms-full-stars" style="width: 0%"></div></div>
+                            <span>(0 reviews)</span></li></ul></div><div class="mm_box mm_messages"><div class="contact">
+                        Please <a href="https://www.chopni.com/login">log in</a> to contact Giorgio Modelli</div></div></div>
+        </div>
             </div>
+
+
+
         <div class="col-xs-9">
+
                 <ul class="menu-items">
                     <li class="active">Product description</li>
                     <li></li>

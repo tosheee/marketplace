@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use Session;
+
 use App\Cart;
 use App\Like;
+use App\Order;
+
 use App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
-use Session;
+use App\Admin\Seller;
+use App\Admin\Page;
 use App\Admin\SubCategory;
 use App\Admin\Category;
 use App\Admin\Product;
 use App\Admin\UserMessage;
-use App\Order;
-use App\Admin\Page;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class StoreController extends Controller
 {
@@ -35,7 +37,6 @@ class StoreController extends Controller
             $product = Product::find($id);
             $categories = Category::all();
             $subCategories = SubCategory::all();
-
             $oldCart = Session::has('cart') ? Session::get('cart') : null;
             $cart = new Cart($oldCart);
         }
@@ -46,8 +47,15 @@ class StoreController extends Controller
         
         if(isset($product))
         {
+            $seller = Seller::find($product->seller_id);
             $metaDescription = json_decode($product->description, true);
-            return view('store.show')->with('categories', $categories)->with('subCategories', $subCategories)->with('product', $product)->with('cart', $cart)->with('metaDescription', $metaDescription);
+            return view('store.show')
+                ->with('categories', $categories)
+                ->with('subCategories', $subCategories)
+                ->with('product', $product)
+                ->with('cart', $cart)
+                ->with('metaDescription', $metaDescription)
+                ->with('seller', $seller);
         }
         else
         {

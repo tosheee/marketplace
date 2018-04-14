@@ -58,16 +58,14 @@ Route::group(['prefix' => 'sellers'], function() {
     Route::post('/store_product',                  ['uses' => 'SellersController@storeProduct',     'as' => 'sellers.store_product',    'middleware' => 'roles', 'roles' => ['Seller'] ]);
     Route::get('/{user_id}/products/{id}',         ['uses' => 'SellersController@insertedProducts', 'as' => 'sellers.insertedProducts', 'middleware' => 'roles', 'roles' => ['Seller'] ]);
     Route::get('/{user_id}/create_seller',         ['uses' => 'SellersController@createSeller',     'as' => 'sellers.create_seller',    'middleware' => 'roles', 'roles' => ['Seller'] ]);
+    Route::get('/show_seller/{seller_id}',         ['uses' => 'SellersController@showSeller',       'as' => 'sellers.show_seller']);
     Route::post('/{user_id}/store_seller',         ['uses' => 'SellersController@storeSeller',      'as' => 'sellers.store_seller',     'middleware' => 'roles', 'roles' => ['Seller'] ]);
 
 
 });
 
+////////// Admin //////////
 
-
-/////////////////////////////////////////////////////
-
-// Admin
 Route::group(['prefix' => 'admin'], function() {
     Route::get    ('/dashboard',            ['uses' => 'AdminController@index']);
     Route::get    ('/not_completed_orders', ['uses' => 'AdminController@not_completed_orders']);
