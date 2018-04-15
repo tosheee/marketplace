@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use ImagesHelper;
 use App\Admin\Category;
 use App\Admin\SubCategory;
 use App\Admin\Product;
@@ -16,6 +17,8 @@ class SellersController extends Controller
 {
 
     public function index($id){
+
+        //echo ImagesHelper::test_helper();
 
         $ordersIntoSeller = Order::where('user_id', $id)->orderBy('created_at', 'desc')->get();
 
