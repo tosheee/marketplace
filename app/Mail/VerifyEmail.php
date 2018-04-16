@@ -31,6 +31,6 @@ class VerifyEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('auto_mail.sendView');
+        return $this->from('support@marketplace.com')->view('auto_mail.send-verify-email');
     }
 }

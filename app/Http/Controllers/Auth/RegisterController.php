@@ -77,7 +77,8 @@ class RegisterController extends Controller
 
             return redirect('/account/'.$user->id)->with('success', 'Your query is ');
         }else{
-            return 'User not found';
+            // can be create view 'Your email was confirmed'
+            return 'Your email was confirmed';
         }
     }
 }
