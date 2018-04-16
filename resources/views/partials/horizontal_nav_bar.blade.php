@@ -73,7 +73,11 @@
                                 </li>
                             @else
                                 <li>
-                                    <a href="/account/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a>
+                                    @if (Auth::user()->status == 1)
+                                        <a href="/account/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a>
+                                    @else
+                                        <a title="Please verify your email address to enable your account page">{{ Auth::user()->name }}</a>
+                                    @endif
                                 </li>
                             @endif
                             <li>

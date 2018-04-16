@@ -7,10 +7,11 @@ View::composer('*', function($view) {$view->with('subCategories',            App
 View::composer('*', function($view) {$view->with('allSliderData',            App\Admin\Slider::all());});
 View::composer('*', function($view) {$view->with('pagesButtonsRender',       App\Admin\Page::where('active_page', true)->get());});
 //////////////////////////////////////////////\
-Route::get('/verify/{token}', 'VerifyController@verify')->name('verify');
+
+//verify
+Route::get('/verify/{email}/{verifyToken}', 'Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
 
 //auth
-
 Auth::routes();
 
 

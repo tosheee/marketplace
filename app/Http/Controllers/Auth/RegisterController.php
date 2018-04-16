@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Session;
+use Mail;
+use App\Mail\VerifyEmail;
 
 class RegisterController extends Controller
 {
@@ -42,31 +44,40 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'token' => str_random(50),
+            'verifyToken' => str_random(40),
         ]);
 
         $user->roles()->attach(Role::where('name', 'User')->first());
 
+        ///verify user
+
+        $thisUser = User::findOrFail($user->id);
+
+        $this->sendEmail($thisUser);
+
         return $user;
+    }
 
+    public function sendEmail($thisUser)
+    {
+        Mail::to($thisUser['email'])->send(new verifyEmail($thisUser));
+    }
 
-        //Auth::login($user);
+    public function verifyEmail()
+    {
+        return view('accounts.verify-email');
+    }
 
-        //return redirect()->route('/');
+    public function sendEmailDone($email, $verifyToken)
+    {
+        $user = User::where(['email' => $email, 'verifyToken' => $verifyToken])->first();
 
-        //$user->notify(new VerifyEmail($user));
+        if($user){
+            user::where(['email' => $email, 'verifyToken' => $verifyToken])->update(['status' => '1', 'verifyToken' => NULL]);
 
-        //$user->sendVerificationsEmail();
-
-        /*
-        $user = new User();
-        $user->name = $data['name'];
-        $user->email = $data['email'];
-        $user->password = bcrypt($data['password']);
-        $user->token = str_random(50);
-        $user->provider = '';
-        $user->provider_id = '';
-        $user->save();
-        */
+            return redirect('/account/'.$user->id)->with('success', 'Your query is ');
+        }else{
+            return 'User not found';
+        }
     }
 }
