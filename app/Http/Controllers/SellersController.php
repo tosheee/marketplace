@@ -10,17 +10,14 @@ use App\Admin\Product;
 use App\Admin\Country;
 use App\Admin\Seller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB;
-use Image;
+//use Illuminate\Support\Facades\Storage;
+//use Illuminate\Support\Facades\DB;
+//use Image;
 
 
 class SellersController extends Controller
 {
-
     public function index($id){
-
-        //echo ImagesHelper::test_helper();
 
         $ordersIntoSeller = Order::where('user_id', $id)->orderBy('created_at', 'desc')->get();
 
@@ -97,91 +94,32 @@ class SellersController extends Controller
             'sub_category_id' => 'required',
         ]);
 
-        $seller_id = Seller::where('user_id', $request->input('user_id'))->first()->id;
-
-        if(!isset(DB::table('products')->latest('id')->first()->id))
-        {
-            $product = new Product;
-            $product->user_id = 1;
-            $product->seller_id = 1;
-            $product->category_id     = 1;
-            $product->sub_category_id = 1;
-            $product->identifier      = '';
-            $product->sale            = 0;
-            $product->active          = 0;
-            $product->recommended     = 0;
-            $product->best_sellers    = 0;
-            $product->description     = '';
-            $product->save();
-            $oldId = DB::table('products')->latest('id')->first()->id;
-
-            $product = Product::find($oldId);
-            $product->delete();
-        }
-        else
-        {
-            $oldId = DB::table('products')->latest('id')->first()->id;
-        }
-
-        $productId = $oldId + 1;
+        $productId = ImagesHelper::getLastProductId() + 1;
         $descriptionRequest =  $request->input('description');
 
         if($request->hasFile('upload_main_picture'))
         {
-            $file_main_pic = $request->file('upload_main_picture');
-            $extension = $file_main_pic->getClientOriginalExtension();
-            $fileNameToStore = 'basic_'.time().'.'.$extension;
-            Storage::makeDirectory('public/upload_pictures/'.$productId);
-            $image = Image::make($file_main_pic->getRealPath());
-
-            $path = storage_path('app/public/upload_pictures/'.$productId.'/'. $fileNameToStore);
-
-            $water_mark = storage_path('app/public/common_pictures/watermark.png');
-
-            if(file_exists($water_mark) && $request->input('watermark_checked') == 1)
-            {
-                $image->resize(1000, 1000)->insert($water_mark, 'bottom-right', 10, 10)->save($path);
-            }
-            else
-            {
-                $image->resize(1000, 1000)->save($path);
-            }
-
-            $descriptionRequest['upload_main_picture'] = $fileNameToStore;
+            $descriptionRequest['upload_main_picture'] = ImagesHelper::resizeImages($request->file('upload_main_picture'), $productId, $request->input('watermark_checked'), 1000, 1000);
         }
         else
         {
-            $fileNameToStore = 'noimage.jpg';
+            $descriptionRequest['upload_main_picture'] = 'noimage.jpg';
         }
 
         if($request->hasFile('upload_gallery_pictures') && $request->hasFile('upload_main_picture'))
         {
-            $files_gallery_pic =$request->file('upload_gallery_pictures');
+            $files_gallery_pic = $request->file('upload_gallery_pictures');
 
             for($i = 0; $i < count($files_gallery_pic); $i++)
             {
-                $extension = $files_gallery_pic[$i]->getClientOriginalExtension();
-                $fileNameToStore = 'gallery_'.$i.'_'.time().'.'.$extension;
-                Storage::makeDirectory('public/upload_pictures/'.$productId);
-                $image = Image::make($files_gallery_pic[$i]->getRealPath());
-                $path = storage_path('app/public/upload_pictures/'.$productId.'/'. $fileNameToStore);
-                $water_mark = storage_path('app/public/common_pictures/watermark.png');
-
-                if(file_exists($water_mark) && $request->input('watermark_checked') == 1)
-                {
-                    $image->resize(1000, 1000)->insert($water_mark, 'bottom-right', 10, 10)->save($path);
-                }
-                else
-                {
-                    $image->resize(1000, 1000)->save($path);
-                }
-
-                $descriptionRequest['gallery'][$i]['upload_picture'] = $fileNameToStore;
+                $descriptionRequest['gallery'][$i]['upload_picture'] = ImagesHelper::resizeImages($files_gallery_pic[$i], $productId, $request->input('watermark_checked'), 1000, 1000);
             }
         }
+
+        $seller_id = Seller::where('user_id', $request->input('user_id'))->first()->id;
         $description = json_encode( $descriptionRequest, JSON_UNESCAPED_UNICODE );
 
-        // Create Category
+        // Create product
         $product = new Product;
         $product->user_id         = $request->input('user_id');
         $product->seller_id       = $seller_id;
@@ -195,16 +133,15 @@ class SellersController extends Controller
         $product->description     = $description;
         $product->save();
 
-        session()->flash('notif', 'Продукта е създаден');
+        session()->flash('notify', 'Продукта е създаден');
 
         return redirect('/sellers/'.$request->input('user_id').'/create_product');
     }
 
-    public function insertedProducts($id){
-
+    public function insertedProducts($id)
+    {
         $categories = Category::all();
         $subCategories = SubCategory::all();
-
         $insertedProducts = Product::where('seller_id', $id)->orderBy('created_at', 'desc')->get();
 
         return view('sellers.inserted_products')->with('categories', $categories)->with('subCategories', $subCategories)->with('insertedProducts', $insertedProducts)->with('title', 'Orders');
