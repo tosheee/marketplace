@@ -10,7 +10,9 @@ use App\Admin\Product;
 use App\Admin\Country;
 use App\Admin\Seller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Image;
 
 
 class SellersController extends Controller
@@ -94,8 +96,6 @@ class SellersController extends Controller
             'category_id'     => 'required',
             'sub_category_id' => 'required',
         ]);
-
-        //$user_id = intval($request->input('user_id'));
 
         $seller_id = Seller::where('user_id', $request->input('user_id'))->first()->id;
 
