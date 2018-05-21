@@ -61,85 +61,28 @@ class ProductsController extends Controller
             'sub_category_id' => 'required',
         ]);
 
-        if(!isset(DB::table('products')->latest('id')->first()->id))
-        {
-            $product = new Product;
-            $product->seller_id       = 1;
-            $product->category_id     = 1;
-            $product->sub_category_id = 1;
-            $product->identifier      = '';
-            $product->sale            = 0;
-            $product->active          = 0;
-            $product->recommended     = 0;
-            $product->best_sellers    = 0;
-            $product->description     = '';
-            $product->save();
-            $oldId = DB::table('products')->latest('id')->first()->id;
-
-            $product = Product::find($oldId);
-            $product->delete();
-        }
-        else
-        {
-            $oldId = DB::table('products')->latest('id')->first()->id;
-        }
-
-        $productId = $oldId + 1;
+        $productId = ImagesHelper::getLastProductId() + 1;
         $descriptionRequest =  $request->input('description');
 
         if($request->hasFile('upload_main_picture'))
         {
-            $file_main_pic = $request->file('upload_main_picture');
-            $extension = $file_main_pic->getClientOriginalExtension();
-            $fileNameToStore = 'basic_'.time().'.'.$extension;
-            Storage::makeDirectory('public/upload_pictures/'.$productId);
-            $image = Image::make($file_main_pic->getRealPath());
-
-            $path = storage_path('app/public/upload_pictures/'.$productId.'/'. $fileNameToStore);
-            
-            $water_mark = storage_path('app/public/common_pictures/watermark.png');
-            
-            if(file_exists($water_mark) && $request->input('watermark_checked') == 1)
-            {
-            	$image->resize(1000, 1000)->insert($water_mark, 'bottom-right', 10, 10)->save($path);
-            }
-            else
-            {
-            	$image->resize(1000, 1000)->save($path);
-            }
-            
-            $descriptionRequest['upload_main_picture'] = $fileNameToStore;
+            $descriptionRequest['upload_main_picture'] = ImagesHelper::resizeImages($request->file('upload_main_picture'), $productId, $request->input('watermark_checked'), 1000, 1000);
         }
         else
         {
-            $fileNameToStore = 'noimage.jpg';
+            $descriptionRequest['upload_main_picture'] = 'noimage.jpg';
         }
 
         if($request->hasFile('upload_gallery_pictures') && $request->hasFile('upload_main_picture'))
         {
-            $files_gallery_pic =$request->file('upload_gallery_pictures');
+            $files_gallery_pic = $request->file('upload_gallery_pictures');
 
             for($i = 0; $i < count($files_gallery_pic); $i++)
             {
-                $extension = $files_gallery_pic[$i]->getClientOriginalExtension();
-                $fileNameToStore = 'gallery_'.$i.'_'.time().'.'.$extension;
-                Storage::makeDirectory('public/upload_pictures/'.$productId);
-                $image = Image::make($files_gallery_pic[$i]->getRealPath());
-		        $path = storage_path('app/public/upload_pictures/'.$productId.'/'. $fileNameToStore);
-                $water_mark = storage_path('app/public/common_pictures/watermark.png');
-            
-                if(file_exists($water_mark) && $request->input('watermark_checked') == 1)
-                {
-            	  $image->resize(1000, 1000)->insert($water_mark, 'bottom-right', 10, 10)->save($path);
-                }
-                else
-                {
-            	  $image->resize(1000, 1000)->save($path);
-                }
-                
-             $descriptionRequest['gallery'][$i]['upload_picture'] = $fileNameToStore;
+                $descriptionRequest['gallery'][$i]['upload_picture'] = ImagesHelper::resizeImages($files_gallery_pic[$i], $productId, $request->input('watermark_checked'), 1000, 1000);
             }
         }
+
         $description = json_encode( $descriptionRequest, JSON_UNESCAPED_UNICODE );
 
         // Create Category
@@ -156,9 +99,14 @@ class ProductsController extends Controller
         $product->save();
 
         session()->flash('notif', 'Продукта е създаден');
+
         return redirect('admin/products/create');
     }
-//preg_replace('/\s+|\s/', '_', strtolower($str))
+
+
+
+
+
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
