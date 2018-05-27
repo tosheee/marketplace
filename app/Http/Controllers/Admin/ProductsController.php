@@ -44,7 +44,6 @@ class ProductsController extends Controller
         return view('admin.products.index', ['categories' => $categories, 'subCategories' => $subCategories, 'products' => $products])->with('title', 'Подкатегория >>> '.$subCat);
     }
 
-
     public function create()
     {
         $allSellers = Seller::all();
@@ -102,10 +101,6 @@ class ProductsController extends Controller
 
         return redirect('admin/products/create');
     }
-
-
-
-
 
     public function update(Request $request, $id)
     {
